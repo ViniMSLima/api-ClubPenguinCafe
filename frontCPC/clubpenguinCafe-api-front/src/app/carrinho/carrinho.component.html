@@ -1,0 +1,37 @@
+<app-nav></app-nav>
+<section class="h-100" style="background-color: white">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-10">
+        <div class="d-flex justify-content-center align-items-center mb-4">
+          <h3 style="font-weight: bolder; font-size: x-large">
+            CARRINHO DO PINGUIM
+          </h3>
+        </div>
+
+        <div class="cards" style="width: 100%; align-items: center; justify-content: center; display: flex; flex-direction: column;">
+          @for (item of carrinho; track item)
+          {
+            <div class="card">
+              <img src="../../assets/imagens/canecaCafeCP.png" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Nome do produto</h5>
+                <p class="card-text">Descricao do produto</p>
+              </div>
+              <button class="remover">Remover</button>
+            </div>
+          }
+
+          <div class="card" style="justify-content: center">
+            <div class="card-body" style="justify-content: center">
+              <button type="button" class="btn btn-warning btn-block btn-lg">
+                Proceed to Pay
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

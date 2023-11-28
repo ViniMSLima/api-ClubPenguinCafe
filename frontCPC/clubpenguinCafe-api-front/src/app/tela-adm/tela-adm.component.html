@@ -1,0 +1,154 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="font-weight: bold">
+      <img
+        src="../../assets/imagens/canecaCafeCP.png"
+        alt="Logo"
+        width="30"
+        height="24"
+        class="d-inline-block align-text-top"
+      />
+      Club Penguin Cafe
+    </a>
+    <div>User: salve salve familia</div>
+  </div>
+</nav>
+
+<div
+  style="
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  "
+>
+  <button
+    class="button"
+    type="button"
+    data-bs-toggle="modal"
+    data-bs-target="#addProduto"
+  >
+    Adicionar Produtos
+  </button>
+  <button
+    class="button"
+    type="button"
+    data-bs-toggle="modal"
+    data-bs-target="#addPromocao"
+  >
+    Adicionar Promoção
+  </button>
+  <a href="http://localhost:4200/totem/telainicial" class="button" type="button"
+    >Totem</a
+  >
+</div>
+
+<button mat-flat-button color="primary"
+            (click)="registrar()">
+            Criar Nova Conta
+        </button>
+
+<div
+  class="modal fade"
+  id="addProduto"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Novo Produto</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+            <div class="mb-3">
+                <label for="message-text" class="col-form-label">Nome</label>
+                <input class="form-control" id="message-text">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">descricao</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Preço</label>
+                <input class="form-control" id="message-text">
+              </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Cadastrar produto</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="addPromocao"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Nova Promocao</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+            
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Nome</label>
+            <input class="form-control" id="message-text">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">descricao</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+          <div class="mb-3" style="height: 200px; overflow-y: scroll;">
+            <ul class="list-group">
+                @for (item of list; track item) {
+
+                    <li class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckboxStretched">
+                        <label class="form-check-label stretched-link" for="firstCheckboxStretched"></label>
+                    </li>
+                }
+                </ul>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Preço</label>
+            <input class="form-control" id="message-text">
+          </div>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Cadastrar promoção</button>
+      </div>
+    </div>
+  </div>
+</div>

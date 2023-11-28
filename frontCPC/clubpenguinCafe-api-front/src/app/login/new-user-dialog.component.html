@@ -1,0 +1,28 @@
+<p>
+    <mat-form-field appearance="fill">
+        <mat-label>Usuário</mat-label>
+        <input matInput placeholder="Meu Usuário"
+            [(ngModel)]="username"/>
+    </mat-form-field>
+</p>
+
+<p>
+    <mat-form-field appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password"
+            [(ngModel)]="password"/>
+    </mat-form-field>
+</p>
+
+<p>
+    <mat-form-field appearance="fill">
+        <mat-label>RepetirSenha</mat-label>
+        <input matInput type="password"
+            [(ngModel)]="repeatPassword"/>
+    </mat-form-field>
+</p>
+
+<button mat-flat-button color="primary"
+(click)="create()">
+    Criar
+</button>

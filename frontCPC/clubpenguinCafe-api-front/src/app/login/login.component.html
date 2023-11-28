@@ -1,0 +1,112 @@
+<div style="align-items: center; display: flex; height: 100%; width: 100%; justify-content: center;">
+  <div
+    style="
+      width: 40%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    "
+  >
+
+  <mat-card-content>
+
+    <img
+        src="../../assets/imagens/Club-Penguin-Logo.png"
+        style="width: 50%"
+      />
+
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Usuário</mat-label>
+            <input matInput placeholder="Meu Usuário"
+                [(ngModel)]="username"/>
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Senha</mat-label>
+            <input matInput type="password"
+                [(ngModel)]="password"/>
+        </mat-form-field>
+    </p>
+    
+    <div class="login-buttons">
+
+        <button mat-flat-button color="primary"
+            (click)="logar()">
+            Logar
+        </button>
+        
+        <button mat-flat-button color="primary"
+            (click)="registrar()">
+            Criar Nova Conta
+        </button>
+    </div>
+
+</mat-card-content>
+
+    <img
+      src="../../assets/imagens/pinguimCafeteriaCP.jpeg"
+      style="width: 30%; margin-left: 20px;"
+    />
+  </div>
+</div>
+
+
+<mat-card>
+
+  <mat-card-header>
+
+      <mat-card-title>
+          Login
+      </mat-card-title>
+
+  </mat-card-header>
+
+  <mat-card-content>
+
+      <p>
+          <mat-form-field appearance="fill">
+              <mat-label>Usuário</mat-label>
+              <input matInput placeholder="Meu Usuário"
+                  [(ngModel)]="username"/>
+          </mat-form-field>
+      </p>
+
+      <p>
+          <mat-form-field appearance="fill">
+              <mat-label>Senha</mat-label>
+              <input matInput type="password"
+                  [(ngModel)]="password"/>
+          </mat-form-field>
+      </p>
+      
+      <div class="login-buttons">
+  
+          <button mat-flat-button color="primary"
+              (click)="logar()">
+              Logar
+          </button>
+          
+          <button mat-flat-button color="primary"
+              (click)="registrar()">
+              Criar Nova Conta
+          </button>
+      </div>
+
+  </mat-card-content>
+  
+</mat-card>
+
+<input 
+  type="file" #file 
+  placeholder="Choose file" 
+  (change)="uploadFile(file.files)" 
+  style="display:none;">
+<button 
+  mat-raised-button color="primary" 
+  (click)="file.click()">Carregar imagem</button>
+
+<img src="https://localhost:7122/user/image?photoid=34">

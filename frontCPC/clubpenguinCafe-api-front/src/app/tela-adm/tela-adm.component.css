@@ -1,0 +1,44 @@
+.button{
+    margin: 10px;
+    width: 30%;
+    height: 20%;
+    border-radius: 20px;
+    background-color: aliceblue;
+    border: none;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.button:hover{
+    background-color: rgb(130, 187, 236);
+}
+
+.button:active{
+    transform: scale(0.95);
+}
+
+button{
+    border: none;
+    border-radius: 20px;
+    width: 120px;
+    height: 50px;
+    font-weight: bold;
+    color: rgb(24, 126, 167);
+    margin: 10px;
+
+}
+
+button:hover{
+    opacity: 80%;
+}
+
+button:active{
+    transform: scale(0.95);
+}
+
+mat-form-field{
+    width: 400px;
+    margin: 10px;
+}

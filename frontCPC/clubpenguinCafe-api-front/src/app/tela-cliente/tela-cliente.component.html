@@ -1,0 +1,42 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="font-weight: bold">
+      <img
+        src="../../assets/imagens/canecaCafeCP.png"
+        alt="Logo"
+        width="30"
+        height="24"
+        class="d-inline-block align-text-top"
+      />
+      Club Penguin Cafe
+    </a>
+    <div>
+        <button class="nav-button" (click)="onClickProdutos()" style="font-weight: bold;">Produtos </button>
+        <button class="nav-button" (click)="onClickPromocoes()" style="font-weight: bold;">Promoções</button>
+    </div>
+    <div>
+        User: salve salve familia
+    </div>
+</div>
+</nav>
+
+<div>
+  <div class="options2">
+    @for (item of list; track item) {
+    <div class="card">
+      <img
+        src="../../assets/imagens/canecaCafeCP.png"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <div>
+            <h5 class="card-title">Nome do produto</h5>
+            <p class="card-text">Descricao do produto</p>
+        </div>
+        <p class="card-price">R$</p>
+      </div>
+    </div>
+    }
+  </div>
+</div>

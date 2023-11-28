@@ -1,0 +1,161 @@
+<body style="overflow: hidden;">
+  <app-nav></app-nav>
+  <div style="height: 500px; width: 100%">
+    <div id="carouselInicio" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner" style="object-fit: cover; border-radius: 10px">
+        <div class="carousel-item active">
+          <img src="../../assets/imagens/centroCP.png" class="img-fluid" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="../../assets/imagens/cafeCP.jpeg" class="img-fluid" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="../../assets/imagens/ninjas1.png" class="img-fluid" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="../../assets/imagens/cptop.jfif" class="img-fluid" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="../../assets/imagens/ninjas2.jpg" class="img-fluid" class="d-block w-100" alt="..." />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="options">
+    <button class="button"></button>
+    <button class="button"></button>
+    <button class="button"></button>
+  </div>
+
+  <div style="overflow-y: scroll; height: 58%; width: 100%;">
+    <div class="options2">
+
+      @for (item of list; track item)
+      {
+        <div class="card">
+          <img src="../../assets/imagens/canecaCafeCP.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Nome do produto</h5>
+            <p class="card-text">Descricao do produto</p>
+          </div>
+          <button class="adicionar">Add</button>
+        </div>
+      }
+      
+    </div>
+
+    <!-- <div class="options2">
+      <div class="card">
+        <img src="../../assets/imagens/canecaCafeCP.png" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Nome do produto</h5>
+          <p class="card-text">Descricao do produto</p>
+        </div>
+        <button class="adicionar">Add</button>
+      </div>
+      <div class="card">
+        <img src="../../assets/imagens/copoCafeCP.png" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Nome do produto</h5>
+          <p class="card-text">Descricao do produto</p>
+        </div>
+        <button class="adicionar">Add</button>
+      </div>
+    </div>
+
+    <div class="options2">
+      <div class="card">
+        <img src="../../assets/imagens/peixeCP.png" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Nome do produto</h5>
+          <p class="card-text">Descricao do produto</p>
+        </div>
+        <button class="adicionar">Add</button>
+      </div>
+      <div class="card">
+        <img src="../../assets/imagens/sandubaCP.png" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Nome do produto</h5>
+          <p class="card-text">Descricao do produto</p>
+        </div>
+        <button class="adicionar">Add</button>
+      </div>
+    </div>
+    <div class="options2">
+      <div class="card">
+        <img src="../../assets/imagens/pizzaCP.png" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Nome do produto</h5>
+          <p class="card-text">Descricao do produto</p>
+        </div>
+        <button class="adicionar">Add</button>
+      </div>
+      <div class="card">
+        <img src="../../assets/imagens/comidadepuffleCP.png" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Nome do produto</h5>
+          <p class="card-text">Descricao do produto</p>
+        </div>
+        <button class="adicionar">Add</button>
+      </div>
+    </div>
+
+    <div class="options2">
+      <div class="card">
+        <img src="../../assets/imagens/cangrejoCP.png" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Nome do produto</h5>
+          <p class="card-text">Descricao do produto</p>
+        </div>
+        <button class="adicionar">Add</button>
+      </div>
+      <div class="card">
+        <img src="../../assets/imagens/copoCafeCP.png" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Nome do produto</h5>
+          <p class="card-text">Descricao do produto</p>
+        </div>
+        <button class="adicionar">Add</button>
+      </div>
+    </div>
+
+    <div class="options2">
+      <div class="card">
+        <img src="../../assets/imagens/peixeCP.png" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Nome do produto</h5>
+          <p class="card-text">Descricao do produto</p>
+        </div>
+        <button class="adicionar">Add</button>
+      </div>
+      <div class="card">
+        <img src="../../assets/imagens/sandubaCP.png" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Nome do produto</h5>
+          <p class="card-text">Descricao do produto</p>
+        </div>
+        <button class="adicionar">Add</button>
+      </div>
+    </div>
+    <div class="options2">
+      <div class="card">
+        <img src="../../assets/imagens/pizzaCP.png" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Nome do produto</h5>
+          <p class="card-text">Descricao do produto</p>
+        </div>
+        <button class="adicionar">Add</button>
+      </div>
+      <div class="card">
+        <img src="../../assets/imagens/comidadepuffleCP.png" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Nome do produto</h5>
+          <p class="card-text">Descricao do produto</p>
+        </div>
+        <button class="adicionar">Add</button>
+      </div>
+    </div> -->
+  </div>
+  <app-footer></app-footer>
+</body>

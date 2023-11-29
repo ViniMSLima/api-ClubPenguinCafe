@@ -31,13 +31,14 @@
   <div style="overflow-y: scroll; height: 58%; width: 100%;">
     <div class="options2">
 
-      @for (item of list; track item)
+      @for (item of list2; track item)
       {
         <div class="card">
           <img src="../../assets/imagens/canecaCafeCP.png" class="card-img-top" alt="..." />
           <div class="card-body">
-            <h5 class="card-title">Nome do produto</h5>
-            <p class="card-text">Descricao do produto</p>
+            <h5 class="card-title">{{item.nome}}</h5>
+            <p class="card-text">{{item.descricao}}</p>
+            <p class="card-text">{{item.preco}}</p>
           </div>
           <button class="adicionar">Add</button>
         </div>

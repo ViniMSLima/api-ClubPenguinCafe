@@ -18,14 +18,14 @@ export class TelaClienteComponent implements OnInit {
   onClickProdutos() {
     throw new Error('Method not implemented.');
   }
-  list: any;
-  list2: any = [];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private service: ShopListService
-  ) {}
-
+    ) {}
+    
+    list: any;
+    list2: any = [];
   ngOnInit(): void {
     this.service.initItems().subscribe( (data:any) => {
       this.list2 = []

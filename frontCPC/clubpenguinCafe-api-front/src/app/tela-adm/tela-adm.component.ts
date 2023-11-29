@@ -14,6 +14,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductService } from '../services/api-product.service';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-tela-adm',
@@ -22,23 +23,18 @@ import { ProductService } from '../services/api-product.service';
   templateUrl: './tela-adm.component.html',
   styleUrl: './tela-adm.component.css',
 })
-export class TelaAdmComponent implements OnInit {
-addProduto() {
-  this.dialog.open(NewProductDialog);
-}
-    
-  registrar()
-  {
-    this.dialog.open(NewAdmDialog);
-  }
-  onClickPromocoes() {
-    throw new Error('Method not implemented.');
-  }
-  onClickProdutos() {
-    throw new Error('Method not implemented.');
+export class TelaAdmComponent {
+  addProduto() {
+    this.dialog.open(NewProductDialog);
   }
 
- 
+  addPromo() {
+    this.dialog.open(NewPromoDialog);
+  }
+
+  registrar() {
+    this.dialog.open(NewAdmDialog);
+  }
 
   constructor(
     public dialog: MatDialog,
@@ -47,45 +43,94 @@ addProduto() {
     private service: ShopListService
   ) {}
 
-  ngOnInit(): void {
-    
-
-  }
-
   produto = '';
   descricao = '';
   preco = 0;
 }
 
-
 @Component({
   selector: 'app-new-product-dialog',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatInputModule,
-    MatButtonModule, MatFormFieldModule, FormsModule, MatSlideToggleModule ],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+  ],
   templateUrl: './new-product-dialog.component.html',
-  styleUrl: './tela-adm.component.css'
+  styleUrl: './tela-adm.component.css',
 })
-export class NewProductDialog
-{
-  nome: string = ""
-  descricao: string = ""
-  preco: number = 0
+export class NewProductDialog {
+  nome: string = '';
+  descricao: string = '';
+  preco: number = 0;
 
-  constructor(public dialogRef: MatDialogRef<NewProductDialog>,
+  constructor(
+    public dialogRef: MatDialogRef<NewProductDialog>,
     private client: ProductService
-    ) {}
+  ) {}
 
-  create()
-  {
+  create() {
     this.client.register({
       nome: this.nome,
       descricao: this.descricao,
       preco: this.preco,
       id: 0,
-      imagem: ''
-    })
+      imagem: '',
+    });
 
-    this.dialogRef.close()
+    this.dialogRef.close();
+  }
+}
+
+@Component({
+  selector: 'app-new-promo-dialog',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+  ],
+  templateUrl: './new-promo-dialog.component.html',
+  styleUrl: './tela-adm.component.css',
+})
+export class NewPromoDialog implements OnInit {
+  nome: string = '';
+  descricao: string = '';
+  preco: number = 0;
+
+  constructor(
+    public dialogRef: MatDialogRef<NewPromoDialog>,
+    private client: ProductService,
+    private service: ShopListService
+  ) {}
+  list: any;
+  list2: any = [];
+  ngOnInit(): void {
+    this.service.initItems().subscribe((data: any) => {
+      this.list2 = [];
+      data.a.forEach((x: any) => this.list2.push(x));
+    });
+  }
+
+  create() {
+    this.client.register({
+      nome: this.nome,
+      descricao: this.descricao,
+      preco: this.preco,
+      id: 0,
+      imagem: '',
+    });
+
+    this.dialogRef.close();
   }
 }

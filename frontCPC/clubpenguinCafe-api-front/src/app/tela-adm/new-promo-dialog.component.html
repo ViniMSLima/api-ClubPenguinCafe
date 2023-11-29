@@ -1,0 +1,47 @@
+<mat-card>
+    <mat-card-header class="justify-content-center">
+      <mat-card-title color="white" class="mb-3">Promoção</mat-card-title>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <form class="example-form">
+        <mat-form-field>
+          <mat-label>Selecione o Produto</mat-label>
+          <mat-select>
+            @for (food of list2; track food) {
+            <mat-option [value]="food.nome">{{ food.nome }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input matInput
+                    [(ngModel)]="nome"/>
+            </mat-form-field>
+          </p>
+          
+          <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Descricao</mat-label>
+                <input matInput 
+                    [(ngModel)]="descricao"/>
+            </mat-form-field>
+          </p>
+          
+          <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Preco</mat-label>
+                <input matInput type="n"
+                    [(ngModel)]="preco"/>
+            </mat-form-field>
+          </p>
+          
+      </form>
+    </mat-card-content>
+  
+    <mat-card-actions align="end">
+      <button mat-button>Criar Promocao</button>
+    </mat-card-actions>
+  </mat-card>

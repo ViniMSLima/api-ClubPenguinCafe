@@ -1,4 +1,4 @@
-<div
+<!-- <div
   class="modal fade"
   id="addProduto"
   tabindex="-1"
@@ -40,4 +40,33 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
+<p>
+  <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput
+          [(ngModel)]="nome"/>
+  </mat-form-field>
+</p>
+
+<p>
+  <mat-form-field appearance="fill">
+      <mat-label>Descricao</mat-label>
+      <input matInput 
+          [(ngModel)]="descricao"/>
+  </mat-form-field>
+</p>
+
+<p>
+  <mat-form-field appearance="fill">
+      <mat-label>Preco</mat-label>
+      <input matInput type="n"
+          [(ngModel)]="preco"/>
+  </mat-form-field>
+</p>
+
+<button mat-flat-button color="primary"
+(click)="create()">
+  Criar
+</button>

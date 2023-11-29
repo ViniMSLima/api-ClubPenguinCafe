@@ -26,7 +26,7 @@ export class CarrinhoComponent implements OnInit {
     private service: ShopListService
   ) {}
   
-  carrinho: Product[] = [{descricao: "suco", produto: "amora", preco: 221}];
+  carrinho: Product[] = [{id: 1, imagem: "", descricao: "suco", nome: "amora", preco: 221}];
 
   ngOnInit(): void {
     this.service.initCarrinho();

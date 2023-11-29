@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../model/Product';
+import { ProductService } from './api-product.service';
+import { ApiClientService } from './api-client.service';
 
 @Injectable({
   providedIn: 'root',
@@ -52,9 +54,9 @@ export class ShopListService
 
     let data: Product[] = JSON.parse(list);
     data.forEach((element) => {
-      if (element.produto == produto)
+      if (element.nome == produto)
       {
-        element.produto = newProduto;
+        element.nome = newProduto;
         element.descricao = descricao;
       }
     });
@@ -73,46 +75,54 @@ export class ShopListService
 
     let data: Product[] = JSON.parse(list);
     data.forEach((element) => {
-      if (element.produto == Name) preco = element.preco;
+      if (element.nome == Name) preco = element.preco;
     });
 
     return preco;
   }
 
-  constructor() {}
+  constructor(private http: ApiClientService) { }
 
-  initItems() {
+  
+
+  initItems()
+  {
+    return this.http.get("product")
+  }
+
+  teste() {
     var storedData = localStorage.getItem('list');
     // if (storedData !== null) return;
+    
 
-    let dadosIniciais: Product[] = [
-      { produto: 'burgae', descricao: 'doce', preco: 12.00 },
-      { produto: 'juissa', descricao: 'doce', preco: 12.00 },
-      { produto: 'sus', descricao: 'doce', preco: 12.00 },
-      { produto: 'burgae', descricao: 'doudce', preco: 124.00 },
-      { produto: 'juxhfgissa', descricao: 'doce', preco: 12.00 },
-      { produto: 'sus', descricao: 'doce', preco: 12.00 },
-      { produto: 'burgae', descricao: 'doce', preco: 12.00 },
-      { produto: 'juissa', descricao: 'doce', preco: 12.00 },
-      { produto: 'sus', descricao: 'doce', preco: 12.00 },
-      { produto: 'burgae', descricao: 'doce', preco: 12.00 },
-      { produto: 'juissa', descricao: 'doce', preco: 12.00 },
-      { produto: 'sus', descricao: 'doce', preco: 12.00 },
-      { produto: 'burgae', descricao: 'doce', preco: 12.00 },
-      { produto: 'juissa', descricao: 'doce', preco: 12.00 },
-      { produto: 'sus', descricao: 'doce', preco: 12.00 },
-      { produto: 'burgae', descricao: 'doudce', preco: 124.00 },
-      { produto: 'juxhfgissa', descricao: 'doce', preco: 12.00 },
-      { produto: 'sus', descricao: 'doce', preco: 12.00 },
-      { produto: 'burgae', descricao: 'doce', preco: 12.00 },
-      { produto: 'juissa', descricao: 'doce', preco: 12.00 },
-      { produto: 'sus', descricao: 'doce', preco: 12.00 },
-      { produto: 'burgae', descricao: 'doce', preco: 12.00 },
-      { produto: 'juissa', descricao: 'doce', preco: 12.00 },
-      { produto: 'sus', descricao: 'doce', preco: 12.00 },
-    ];
+  //   let dadosIniciais: Product[] = [
+  //     { nome: 'burgae', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'juissa', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'sus', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'burgae', descricao: 'doudce', preco: 124.00 },
+  //     { nome: 'juxhfgissa', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'sus', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'burgae', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'juissa', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'sus', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'burgae', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'juissa', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'sus', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'burgae', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'juissa', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'sus', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'burgae', descricao: 'doudce', preco: 124.00 },
+  //     { nome: 'juxhfgissa', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'sus', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'burgae', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'juissa', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'sus', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'burgae', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'juissa', descricao: 'doce', preco: 12.00 },
+  //     { nome: 'sus', descricao: 'doce', preco: 12.00 },
+  //   ];
 
-    localStorage.setItem('list', JSON.stringify(dadosIniciais));
+  //   localStorage.setItem('list', JSON.stringify(dadosIniciais));
   }
 
   getItems() {

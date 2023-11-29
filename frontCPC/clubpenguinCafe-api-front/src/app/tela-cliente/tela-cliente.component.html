@@ -22,7 +22,7 @@
 
 <div>
   <div class="options2">
-    @for (item of list; track item) {
+    @for (item of list2; track item.id) {
     <div class="card">
       <img
         src="../../assets/imagens/canecaCafeCP.png"
@@ -31,10 +31,10 @@
       />
       <div class="card-body">
         <div>
-            <h5 class="card-title">Nome do produto</h5>
-            <p class="card-text">Descricao do produto</p>
+            <h5 class="card-title">{{item.nome}}</h5>
+            <p class="card-text">Descrição: {{item.descricao}}</p>
         </div>
-        <p class="card-price">R$</p>
+        <p class="card-price">R$ {{item.preco}}</p>
       </div>
     </div>
     }

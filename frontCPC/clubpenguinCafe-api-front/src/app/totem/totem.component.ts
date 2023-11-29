@@ -19,21 +19,23 @@ export class TotemComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private service: ShopListService
-  ) {}
-
-  ngOnInit(): void {
-    this.service.initItems();
-    this.list = this.service.getItems();
-  }
-
-  produto = '';
-  descricao = '';
-  preco = 0;
+    ) {}
+    
+    ngOnInit(): void {
+      this.service.initItems();
+      this.list = this.service.getItems();
+    }
+    
+    produto = '';
+    descricao = '';
+    preco = 0;
+    id: number = 0;
+    imagem: string = '';
 
   AddProduto() {
     var added = false;
     this.list.map((it) => {
-      if (it.produto == this.produto) {
+      if (it.nome == this.produto) {
         it.descricao = this.descricao;
         added = true;
       }
@@ -41,9 +43,11 @@ export class TotemComponent implements OnInit {
 
     if (!added) {
       this.list.push({
-        produto: this.produto,
+        nome: this.produto,
         descricao: this.descricao,
         preco: this.preco,
+        id: this.id,
+        imagem: this.imagem
       });
     }
 

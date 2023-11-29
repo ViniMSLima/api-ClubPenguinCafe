@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 namespace backCPC.Services;
 
+using System.Collections.Generic;
 using DTO;
 using Model;
 
@@ -28,8 +29,10 @@ public class ProductService : IProductService
         this.ctx.Add(produto);
         await this.ctx.SaveChangesAsync();
     }
-
-
+    
+    public async Task<List<Produto>> Get()
+        => await this.ctx.Produtos.ToListAsync();
+   
     public async Task<Produto> GetByName(string name)
     {
         var query =

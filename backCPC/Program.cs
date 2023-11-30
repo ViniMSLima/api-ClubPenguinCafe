@@ -13,7 +13,7 @@ using backCPC.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<ClubPenguinCafeDbContext>();
+builder.Services.AddScoped<ClubPenguinDbContext>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddSingleton<CryptoService>(p => new(){
     InternalKeySize = 24,

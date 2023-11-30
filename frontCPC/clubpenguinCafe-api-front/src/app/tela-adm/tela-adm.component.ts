@@ -68,6 +68,7 @@ export class NewProductDialog {
   nome: string = '';
   descricao: string = '';
   preco: number = 0;
+  quantidade: number = 1;
 
   constructor(
     public dialogRef: MatDialogRef<NewProductDialog>,
@@ -79,6 +80,7 @@ export class NewProductDialog {
       nome: this.nome,
       descricao: this.descricao,
       preco: this.preco,
+      quantidade: this.quantidade,
       id: 0,
       imagem: '',
     });
@@ -107,6 +109,7 @@ export class NewPromoDialog implements OnInit {
   nome: string = '';
   descricao: string = '';
   preco: number = 0;
+  quantidade: number = 1;
 
   constructor(
     public dialogRef: MatDialogRef<NewPromoDialog>,
@@ -127,6 +130,7 @@ export class NewPromoDialog implements OnInit {
       nome: this.nome,
       descricao: this.descricao,
       preco: this.preco,
+      quantidade: this.quantidade,
       id: 0,
       imagem: '',
     });

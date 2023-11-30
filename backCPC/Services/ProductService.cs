@@ -10,9 +10,9 @@ using Model;
 
 public class ProductService : IProductService
 {
-    ClubPenguinCafeDbContext ctx;
+    ClubPenguinDbContext ctx;
     ISecurityService security;
-    public ProductService(ClubPenguinCafeDbContext ctx, ISecurityService security)
+    public ProductService(ClubPenguinDbContext ctx, ISecurityService security)
     {
         this.ctx = ctx;
         this.security = security;

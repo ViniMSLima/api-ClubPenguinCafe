@@ -63,7 +63,7 @@ public class ProductController : ControllerBase
     public async Task<IActionResult> GetImage(
         int photoId,
         [FromServices]ISecurityService security,
-        [FromServices]ClubPenguinCafeDbContext ctx)
+        [FromServices]ClubPenguinDbContext ctx)
     {
         var query =
             from image in ctx.Imagems
@@ -110,7 +110,7 @@ public class ProductController : ControllerBase
         Imagem img = new Imagem();
         img.Foto = data;
 
-        ClubPenguinCafeDbContext ctx = new ClubPenguinCafeDbContext();
+        ClubPenguinDbContext ctx = new ClubPenguinDbContext();
         ctx.Add(img);
         await ctx.SaveChangesAsync();
         

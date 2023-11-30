@@ -29,15 +29,18 @@ go
 
 create table Produto(
 	ID int identity primary key,
-	ImagemID int references Imagem(ID) not null,
-	Nome varchar(40),
-	Preco float,
+	ImagemID int references Imagem(ID),
+	Nome varchar(40) not null,
+	Preco float not null,
+	Quantidade int not null,
 	Descricao varchar(MAX)
 );
 go
 
 create table Pedido(
 	ID int identity primary key,
+	Pronto bit not null,
+	Entregue bit not null
 );
 go
 

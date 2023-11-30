@@ -37,6 +37,10 @@
                   <h5 class="card-title">{{ item.nome }}</h5>
                   <p class="card-text">{{ item.preco }}</p>
                 </div>
+                <p>quantidade</p>
+                <button class="bq-menos"></button>
+                <input class="quantidade" type="number" value="item.quantidade">
+                <button class="bq-mais"></button>
                 <button class="remover" (click)="remover(item)">Remover</button>
               </div>
               }

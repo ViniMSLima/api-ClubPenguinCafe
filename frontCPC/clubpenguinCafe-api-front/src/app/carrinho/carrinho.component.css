@@ -40,3 +40,27 @@ section
 .remover:active {
     transform: scale(0.92);
 }
+
+.quantidade {
+    border-radius: 5px;
+    width: 50px;
+    height: 30px;
+}
+
+.bq-menos {
+    margin-left: 20px;
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: red;
+    border-color: darkred;
+}
+
+.bq-mais {
+    margin-right: 20px;
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: lightgreen;
+
+}

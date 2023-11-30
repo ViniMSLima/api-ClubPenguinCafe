@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace backCPC.Model;
 
-public partial class ClubPenguinCafeDbContext : DbContext
+public partial class ClubPenguinDbContext : DbContext
 {
-    public ClubPenguinCafeDbContext()
+    public ClubPenguinDbContext()
     {
     }
 
-    public ClubPenguinCafeDbContext(DbContextOptions<ClubPenguinCafeDbContext> options)
+    public ClubPenguinDbContext(DbContextOptions<ClubPenguinDbContext> options)
         : base(options)
     {
     }
@@ -29,13 +29,13 @@ public partial class ClubPenguinCafeDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=SJP-C-00004\\SQLEXPRESS01;Initial Catalog=ClubPenguinCafeDB;Integrated Security=True;TrustServerCertificate=true");
+        => optionsBuilder.UseSqlServer("Data Source=SJP-C-00004\\SQLEXPRESS01;Initial Catalog=ClubPenguinDB;Integrated Security=True;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Imagem>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Imagem__3214EC27FFBB9854");
+            entity.HasKey(e => e.Id).HasName("PK__Imagem__3214EC27FA431E71");
 
             entity.ToTable("Imagem");
 
@@ -45,7 +45,7 @@ public partial class ClubPenguinCafeDbContext : DbContext
 
         modelBuilder.Entity<Pedido>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Pedido__3214EC274C9A6472");
+            entity.HasKey(e => e.Id).HasName("PK__Pedido__3214EC274DDA3889");
 
             entity.ToTable("Pedido");
 
@@ -54,7 +54,7 @@ public partial class ClubPenguinCafeDbContext : DbContext
 
         modelBuilder.Entity<Produto>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Produto__3214EC272621BEEA");
+            entity.HasKey(e => e.Id).HasName("PK__Produto__3214EC27D66A10EE");
 
             entity.ToTable("Produto");
 
@@ -62,6 +62,7 @@ public partial class ClubPenguinCafeDbContext : DbContext
             entity.Property(e => e.Descricao).IsUnicode(false);
             entity.Property(e => e.ImagemId).HasColumnName("ImagemID");
             entity.Property(e => e.Nome)
+                .IsRequired()
                 .HasMaxLength(40)
                 .IsUnicode(false);
 
@@ -72,7 +73,7 @@ public partial class ClubPenguinCafeDbContext : DbContext
 
         modelBuilder.Entity<ProdutosPedido>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Produtos__3214EC27CDAC281C");
+            entity.HasKey(e => e.Id).HasName("PK__Produtos__3214EC2753BFA1E3");
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.PedidoId).HasColumnName("PedidoID");
@@ -89,7 +90,7 @@ public partial class ClubPenguinCafeDbContext : DbContext
 
         modelBuilder.Entity<Promocao>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Promocao__3214EC271AD75C93");
+            entity.HasKey(e => e.Id).HasName("PK__Promocao__3214EC277A8146E7");
 
             entity.ToTable("Promocao");
 
@@ -103,7 +104,7 @@ public partial class ClubPenguinCafeDbContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Usuario__3214EC275C6DA3C6");
+            entity.HasKey(e => e.Id).HasName("PK__Usuario__3214EC271EDE2922");
 
             entity.ToTable("Usuario");
 

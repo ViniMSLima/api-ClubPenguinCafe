@@ -9,9 +9,9 @@ using Model;
 
 public class UserService : IUserService
 {
-    ClubPenguinCafeDbContext ctx;
+    ClubPenguinDbContext ctx;
     ISecurityService security;
-    public UserService(ClubPenguinCafeDbContext ctx, ISecurityService security)
+    public UserService(ClubPenguinDbContext ctx, ISecurityService security)
     {
         this.ctx = ctx;
         this.security = security;

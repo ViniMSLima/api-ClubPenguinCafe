@@ -20,6 +20,13 @@ export class TotemComponent implements OnInit {
     private service: ShopListService
   ) {}
 
+  carrinho: any = [];
+
+  // addProdutoCarrinho(item)
+  // {
+  //   this.carrinho.push(item);
+  // }
+
   list: any;
   list2: any = [];
   ngOnInit(): void {

@@ -20,16 +20,36 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CarrinhoComponent implements OnInit {
 
+  remover(item: Product) {
+    this.carrinho = this.carrinho.filter((itemCarrinho) => itemCarrinho != item);
+    localStorage.setItem('carrinho', JSON.stringify(this.carrinho));
+  }
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private service: ShopListService
   ) {}
   
-  carrinho: Product[] = [{id: 1, imagem: "", descricao: "suco", nome: "amora", preco: 221}];
+  carrinho : Product[] = [];
+
+  atualizarCarrinho(): void {
+
+  }
 
   ngOnInit(): void {
-    this.service.initCarrinho();
-    this.carrinho = this.service.getCarrinho();
+    
+    var carregarCarrinho = localStorage.getItem('carrinho');
+
+    if (carregarCarrinho === null) 
+    {
+      console.log("Can't edit an item from null");
+      return;
+    }
+    
+    console.log("carrinho carregado");
+    this.carrinho = JSON.parse(carregarCarrinho);
+    console.log(this.carrinho);
+
   }
 }

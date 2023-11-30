@@ -1,26 +1,47 @@
-<app-nav></app-nav>
-<section class="h-100" style="background-color: white">
-  <div class="container h-100 py-5">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-10">
-        <div class="d-flex justify-content-center align-items-center mb-4">
-          <h3 style="font-weight: bolder; font-size: x-large">
-            CARRINHO DO PINGUIM
-          </h3>
-        </div>
+<div style="overflow: hidden">
+  <app-nav></app-nav>
+  <section class="h-100" style="background-color: white">
+    <div class="container h-100 py-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-10">
+          <div class="d-flex justify-content-center align-items-center mb-4">
+            <h3 style="font-weight: bolder; font-size: x-large">
+              CARRINHO DO PINGUIM
+            </h3>
+          </div>
+          <audio
+            src="../../assets/audio/Club Penguin - Coffee Shop [Loop High Quality] (1) - Copia.mp4"
+            autoplay
+            loop
+          ></audio>
 
-        <div class="cards" style="width: 100%; align-items: center; justify-content: center; display: flex; flex-direction: column;">
-          @for (item of carrinho; track item)
-          {
-            <div class="card">
-              <img src="../../assets/imagens/canecaCafeCP.png" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Nome do produto</h5>
-                <p class="card-text">Descricao do produto</p>
+          <div style="overflow-y: scroll; height: 1300px; width: 100%">
+            <div
+              class="cards"
+              style="
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+              "
+            >
+              @for (item of carrinho; track item) {
+              <div class="card">
+                <img
+                  src="../../assets/imagens/canecaCafeCP.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">{{ item.nome }}</h5>
+                  <p class="card-text">{{ item.preco }}</p>
+                </div>
+                <button class="remover" (click)="remover(item)">Remover</button>
               </div>
-              <button class="remover">Remover</button>
+              }
             </div>
-          }
+          </div>
 
           <div class="card" style="justify-content: center">
             <div class="card-body" style="justify-content: center">
@@ -30,8 +51,7 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>

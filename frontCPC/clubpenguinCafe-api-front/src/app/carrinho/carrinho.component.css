@@ -36,3 +36,7 @@ section
 {
     font-size: 10px;
 }
+
+.remover:active {
+    transform: scale(0.92);
+}

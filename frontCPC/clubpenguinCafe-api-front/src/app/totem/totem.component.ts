@@ -25,15 +25,32 @@ export class TotemComponent implements OnInit {
   addProdutoCarrinho(item: Product)
   {
     this.carrinho.push(item);
+    localStorage.setItem('carrinho', JSON.stringify(this.carrinho));
+
+    console.log(this.carrinho);
   }
 
-  list: any;
   list2: any = [];
+  
   ngOnInit(): void {
+    
     this.service.initItems().subscribe((data: any) => {
       this.list2 = [];
       data.a.forEach((x: any) => this.list2.push(x));
     });
+    console.log(this.carrinho);
+
+    var carregarCarrinho = localStorage.getItem('carrinho');
+
+    if (carregarCarrinho === null) 
+    {
+      console.log("Can't edit an item from null");
+      return;
+    }
+    
+    console.log("carrinho carregado");
+    this.carrinho = JSON.parse(carregarCarrinho);
+    console.log(this.carrinho);
   }
 
   produto = '';

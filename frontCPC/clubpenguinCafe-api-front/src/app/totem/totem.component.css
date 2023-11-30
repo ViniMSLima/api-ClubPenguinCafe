@@ -106,3 +106,7 @@ element.style {
     /* height: 100%; */
     overflow: hidden;
 }
+
+.adicionar:active {
+    transform: scale(0.95);
+}

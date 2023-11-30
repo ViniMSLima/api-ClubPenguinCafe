@@ -24,7 +24,6 @@ export class TelaClienteComponent implements OnInit {
     private service: ShopListService
     ) {}
     
-    list: any;
     list2: any = [];
   ngOnInit(): void {
     this.service.initItems().subscribe( (data:any) => {

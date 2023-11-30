@@ -1,5 +1,6 @@
 <body style="overflow: hidden;">
   <app-nav></app-nav>
+  <audio src="../../assets/audio/Club Penguin - Coffee Shop [Loop High Quality] (1) - Copia.mp4" autoplay loop></audio>
   <div style="height: 500px; width: 100%">
     <div id="carouselInicio" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner" style="object-fit: cover; border-radius: 10px">
@@ -40,7 +41,7 @@
             <p class="card-text">{{item.descricao}}</p>
             <p class="card-text">{{item.preco}}</p>
           </div>
-          <button class="adicionar" onclick="addProdutoCarrinho(item)">Add</button>
+          <button class="adicionar" (click)="addProdutoCarrinho(item)">Add</button>
         </div>
       }
       

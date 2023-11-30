@@ -48,7 +48,7 @@ public class UserController : ControllerBase
         });
 
 
-        return Ok(new { jwt, loggedUser.IsAdm, loggedUser.Nome });
+        return Ok(new {jwt, loggedUser.IsAdm});
     }
 
     [HttpPost("register")]

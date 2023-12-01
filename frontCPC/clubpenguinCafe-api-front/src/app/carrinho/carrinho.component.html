@@ -34,13 +34,14 @@
                   alt="..."
                 />
                 <div class="card-body">
-                  <h5 class="card-title">{{ item.nome }}</h5>
-                  <p class="card-text">{{ item.preco }}</p>
+                  <h5 class="card-title" style="font-size: 30px; font-weight: bold;">{{ item.nome }}</h5>
+                  <p class="card-text" style="font-size: 20px;">R$ {{item.preco * item.quantidade}}</p>
                 </div>
-                <p>quantidade</p>
-                <button class="bq-menos"></button>
-                <input class="quantidade" type="number" value="item.quantidade">
-                <button class="bq-mais"></button>
+                <div style="display: flex; flex-direction: column;">
+                  <button class="bq-mais" (click)="mais(item.id)"><h1>+</h1></button>
+                  <input class="quantidade" value="{{item.quantidade}}" style="text-align: center; font-size: 30px;">
+                  <button class="bq-menos" (click)="menos(item.id)"><h1>-</h1></button>
+                </div>
                 <button class="remover" (click)="remover(item)">Remover</button>
               </div>
               }
@@ -49,6 +50,7 @@
 
           <div class="card" style="justify-content: center">
             <div class="card-body" style="justify-content: center">
+              <h1>Total: R$ {{totalCompra}}</h1>
               <button type="button" class="btn btn-warning btn-block btn-lg">
                 Proceed to Pay
               </button>

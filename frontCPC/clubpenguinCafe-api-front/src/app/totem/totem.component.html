@@ -1,50 +1,87 @@
-<body style="overflow: hidden;">
+<body style="overflow: hidden">
   <app-nav></app-nav>
-  <audio src="../../assets/audio/Club Penguin - Coffee Shop [Loop High Quality] (1) - Copia.mp4" autoplay loop></audio>
+  <audio
+    src="../../assets/audio/Club Penguin - Coffee Shop [Loop High Quality] (1) - Copia.mp4"
+    autoplay
+    loop
+  ></audio>
   <div style="height: 500px; width: 100%">
     <div id="carouselInicio" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner" style="object-fit: cover; border-radius: 10px">
+      <div
+        class="carousel-inner"
+        style="object-fit: cover; border-radius: 10px"
+      >
         <div class="carousel-item active">
-          <img src="../../assets/imagens/centroCP.png" class="img-fluid" class="d-block w-100" alt="..." />
+          <img
+            src="../../assets/imagens/centroCP.png"
+            class="img-fluid"
+            class="d-block w-100"
+            alt="..."
+          />
         </div>
         <div class="carousel-item">
-          <img src="../../assets/imagens/cafeCP.jpeg" class="img-fluid" class="d-block w-100" alt="..." />
+          <img
+            src="../../assets/imagens/cafeCP.jpeg"
+            class="img-fluid"
+            class="d-block w-100"
+            alt="..."
+          />
         </div>
         <div class="carousel-item">
-          <img src="../../assets/imagens/ninjas1.png" class="img-fluid" class="d-block w-100" alt="..." />
+          <img
+            src="../../assets/imagens/ninjas1.png"
+            class="img-fluid"
+            class="d-block w-100"
+            alt="..."
+          />
         </div>
         <div class="carousel-item">
-          <img src="../../assets/imagens/cptop.jfif" class="img-fluid" class="d-block w-100" alt="..." />
+          <img
+            src="../../assets/imagens/cptop.jfif"
+            class="img-fluid"
+            class="d-block w-100"
+            alt="..."
+          />
         </div>
         <div class="carousel-item">
-          <img src="../../assets/imagens/ninjas2.jpg" class="img-fluid" class="d-block w-100" alt="..." />
+          <img
+            src="../../assets/imagens/ninjas2.jpg"
+            class="img-fluid"
+            class="d-block w-100"
+            alt="..."
+          />
         </div>
       </div>
     </div>
   </div>
 
   <div class="options">
-    <button class="button"></button>
-    <button class="button"></button>
+    <button class="button">Produtos</button>
+    <button class="button">Promoções</button>
     <button class="button"></button>
   </div>
 
-  <div style="overflow-y: scroll; height: 58%; width: 100%;">
+  <div style="overflow-y: scroll; height: 58%; width: 100%">
     <div class="options2">
-
-      @for (item of list2; track item)
-      {
-        <div class="card">
-          <img src="../../assets/imagens/canecaCafeCP.png" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">{{item.nome}}</h5>
-            <p class="card-text">{{item.descricao}}</p>
-            <p class="card-text">{{item.preco}}</p>
-          </div>
-          <button class="adicionar" (click)="addProdutoCarrinho(item)">Add</button>
+      @for (item of list2; track item) {
+      <div class="card">
+        <img
+          src="../../assets/imagens/canecaCafeCP.png"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body" style="width: 30%">
+          <h5 class="card-title" style="font-size: 25px; font-weight: bold">
+            {{ item.nome }}
+          </h5>
+          <p class="card-text" style="font-size: 15px">{{ item.descricao }}</p>
+          <p class="card-text" style="font-size: 18px">R$ {{ item.preco }}</p>
         </div>
+        <button class="adicionar" (click)="addProdutoCarrinho(item)">
+          Add
+        </button>
+      </div>
       }
-      
     </div>
 
     <!-- <div class="options2">

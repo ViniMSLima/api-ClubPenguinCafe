@@ -4,9 +4,11 @@ using System.Threading.Tasks;
 
 namespace backCPC.Services;
 
+using System;
 using System.Collections.Generic;
 using DTO;
 using Model;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 public class ProductService : IProductService
 {
@@ -25,6 +27,7 @@ public class ProductService : IProductService
         produto.Nome = data.Nome;
         produto.Preco = data.Preco;
         produto.Descricao = data.Descricao;
+        produto.Quantidade = (int)(data.Quantidade);
 
         this.ctx.Add(produto);
         await this.ctx.SaveChangesAsync();

@@ -24,10 +24,20 @@ export class TotemComponent implements OnInit {
 
   addProdutoCarrinho(item: Product)
   {
-    this.carrinho.push(item);
-    localStorage.setItem('carrinho', JSON.stringify(this.carrinho));
+    var a = 0;
 
-    console.log(this.carrinho);
+    this.carrinho.forEach(element => {
+      if(element.nome == item.nome)
+      {
+        element.quantidade++;
+        a++;
+      }
+    });
+
+    if(a == 0)
+      this.carrinho.push(item);
+
+    localStorage.setItem('carrinho', JSON.stringify(this.carrinho));
   }
 
   list2: any = [];

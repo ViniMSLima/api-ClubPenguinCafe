@@ -22,9 +22,9 @@ section
 
 .remover{
     width: 20%;
-    height: 300px;
+    height: 243px;
     margin-right: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: rgb(255, 127, 127);
     border: none;
     font-size: 20px;
@@ -37,30 +37,39 @@ section
     font-size: 10px;
 }
 
-.remover:active {
+button:active {
     transform: scale(0.92);
 }
 
 .quantidade {
     border-radius: 5px;
-    width: 50px;
-    height: 30px;
+    width: 100px;
+    height: 80px;
+    border: none;
+
 }
 
 .bq-menos {
-    margin-left: 20px;
-    width: 50px;
-    height: 30px;
+    width: 100px;
+    height: 80px;
     border-radius: 5px;
     background-color: red;
     border-color: darkred;
+    margin-right: 10px;
+    border: none;
+}
+
+h1{
+    font-size: 40px;
+    padding-top: 15px;
 }
 
 .bq-mais {
-    margin-right: 20px;
-    width: 50px;
-    height: 30px;
+    width: 100px;
+    height: 80px;
     border-radius: 5px;
     background-color: lightgreen;
+    border: none;
+
 
 }

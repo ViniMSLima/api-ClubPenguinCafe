@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ClientData } from '../client-data';
+import { ClientData } from '../model/client-data';
 import { ApiClientService } from './api-client.service';
 import { Product } from '../model/Product';
 

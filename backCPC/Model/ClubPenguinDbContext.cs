@@ -111,6 +111,13 @@ public partial class ClubPenguinDbContext : DbContext
             entity.ToTable("Promocao");
 
             entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Descricao)
+                .HasMaxLength(80)
+                .IsUnicode(false);
+            entity.Property(e => e.Nome)
+                .IsRequired()
+                .HasMaxLength(80)
+                .IsUnicode(false);
             entity.Property(e => e.ProdutoId).HasColumnName("ProdutoID");
 
             entity.HasOne(d => d.Produto).WithMany(p => p.Promocaos)

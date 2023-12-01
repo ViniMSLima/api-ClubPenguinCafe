@@ -56,6 +56,9 @@ ul
     border-radius: 10px;
     border: none;
     margin: 10px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .button:hover

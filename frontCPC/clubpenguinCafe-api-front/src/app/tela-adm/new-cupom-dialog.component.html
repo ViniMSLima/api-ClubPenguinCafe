@@ -1,0 +1,21 @@
+
+<p>
+    <mat-form-field appearance="fill">
+        <mat-label>Código</mat-label>
+        <input matInput
+            [(ngModel)]="codigo"/>
+    </mat-form-field>
+  </p>
+  
+  <p>
+    <mat-form-field appearance="fill">
+        <mat-label>Desconto</mat-label>
+        <input matInput 
+            [(ngModel)]="desconto"/>
+    </mat-form-field>
+  </p>
+  
+  <button mat-flat-button color="primary"
+  (click)="create()">
+    Criar
+  </button>

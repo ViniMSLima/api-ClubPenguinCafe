@@ -7,9 +7,9 @@
       <form class="example-form">
         <mat-form-field>
           <mat-label>Selecione o Produto</mat-label>
-          <mat-select>
-            @for (food of list2; track food) {
-            <mat-option [value]="food.nome">{{ food.nome }}</mat-option>
+          <mat-select [(value)]="produtoId" name="select" (selectionChange)="update($event)">
+            @for (item of list2; track item) {
+            <mat-option [value]="item.id">{{ item.nome }}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -18,7 +18,8 @@
             <mat-form-field appearance="fill">
                 <mat-label>Nome</mat-label>
                 <input matInput
-                    [(ngModel)]="nome"/>
+                    [(ngModel)]="nome"
+                    name="nome"/>
             </mat-form-field>
           </p>
           
@@ -26,7 +27,8 @@
             <mat-form-field appearance="fill">
                 <mat-label>Descricao</mat-label>
                 <input matInput 
-                    [(ngModel)]="descricao"/>
+                    [(ngModel)]="descricao"
+                    name="descricao"/>
             </mat-form-field>
           </p>
           
@@ -34,7 +36,8 @@
             <mat-form-field appearance="fill">
                 <mat-label>Preco</mat-label>
                 <input matInput type="n"
-                    [(ngModel)]="preco"/>
+                    [(ngModel)]="preco"
+                    name="preco"/>
             </mat-form-field>
           </p>
           

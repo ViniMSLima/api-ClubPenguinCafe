@@ -19,8 +19,9 @@ builder.Services.AddSingleton<CryptoService>(p => new(){
     InternalKeySize = 24,
     UpdatePeriod = TimeSpan.FromDays(1)
 });
-builder.Services.AddSingleton<ISecurityService, SecurityService>();
 builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<ICupomService, CupomService>();
+builder.Services.AddSingleton<ISecurityService, SecurityService>();
 
 builder.Services.AddCors(options =>
 {

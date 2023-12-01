@@ -15,6 +15,8 @@ public partial class ClubPenguinDbContext : DbContext
     {
     }
 
+    public virtual DbSet<Cupom> Cupoms { get; set; }
+
     public virtual DbSet<Imagem> Imagems { get; set; }
 
     public virtual DbSet<Pedido> Pedidos { get; set; }
@@ -33,6 +35,20 @@ public partial class ClubPenguinDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Cupom>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Cupom__3214EC2762F45037");
+
+            entity.ToTable("Cupom");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Codigo)
+                .IsRequired()
+                .HasMaxLength(8)
+                .IsUnicode(false)
+                .HasColumnName("codigo");
+        });
+
         modelBuilder.Entity<Imagem>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Imagem__3214EC27FA431E71");

@@ -5,14 +5,14 @@ Obs: 'Tem tela/Tem Interface' = Possui parte visual, mesmo sem funcionar.
 - [X] Possui tela de Login.
 - [X] Possui tela de cadastro.
 - [X] Possui tela de usuário normal das promoções.
-- [ ] Possui tela para visualizar código da promoção.
+- [X] Possui tela para visualizar código da promoção.
 - [X] Possui tela de Administrador.
 - [X] Possui tela de Pedidos.
 - [X] Possui tela de Cadastro de Produtos.
 - [X] Possui tela de Cadastro de Promoções.
 - [X] Possui tela do totem.
 - [ ] Possui tela dos gráficos.
-- [ ] Tela do totem tem interface para inserção de código da promoção.
+- [X] Tela do totem tem interface para inserção de código da promoção.
 - [X] Tela do totem tem interface para colocar itens na sacola.
 - [X] Banco de dados criado com tabelas de Usuário, Pedido, ItemPedido, Produto, Promoção ou similar.
 - [X] Rotas no Frontend Configuradas.
@@ -31,13 +31,13 @@ Obs: 'Tem tela/Tem Interface' = Possui parte visual, mesmo sem funcionar.
 - [X] Adm é capaz de ver produtos eXistentes.
 - [X] Adm é capaz de cadastrar novos produtos.
 - [ ] Adm é capaz de ver promoções eXistentes.
-- [ ] Adm é capaz de criar novas promoções.
+- [X] Adm é capaz de criar novas promoções.
 - [ ] Adm é capaz de ver Dashboard com dois gráficos de informações.
 - [ ] Gráficos do Dashboard realmente refletem os dados no banco.
 - [X] É possível ver produtos eXistentes no Totem.
-- [ ] É possível adicionar itens em uma sacola.
+- [X] É possível adicionar itens em uma sacola.
 - [ ] Ao finalizar a compra o pedido é realmente registrado no banco de dados.
-- [ ] É possível ver o custo total do pedido.
+- [X] É possível ver o custo total do pedido.
 - [ ] É possível adicionar uma promoção com um código promocional.
 - [ ] Promoção afeta o custo total do pedido.
 - [ ] Pedidos podem ser vistos na tela de pedidos.
@@ -47,4 +47,4 @@ Obs: 'Tem tela/Tem Interface' = Possui parte visual, mesmo sem funcionar.
 - [ ] Usuário é capaz de gerar um código de promoção válido.
 - [ ] Sistema realmente válida código de promoção.
 
-FALTAM 19
+FALTAM 14

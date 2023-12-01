@@ -55,6 +55,15 @@
                 Proceed to Pay
               </button>
             </div>
+            <mat-form-field appearance="fill" style="margin-right: 10px; width: 300px; padding-top: 20px; border-radius: 10px; ">
+              <mat-label>Cupom</mat-label>
+              <input matInput
+              [(ngModel)]="cupom"
+              name="cupom"/>
+            </mat-form-field>
+            <button (click)="okCupom()" type="button" style="background-color: lightgreen; border: none; border-radius: 8px; height: 59px; width: 80px; margin-right: 10px; font-size: 20px; color: green;">
+              Ok
+            </button>
           </div>
         </div>
       </div>

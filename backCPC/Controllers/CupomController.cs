@@ -51,6 +51,23 @@ public class CupomController : ControllerBase
         return Ok(new {a});
     }
 
+    [HttpPost("getdesconto")]
+    [EnableCors("DefaultPolicy")]
+    public async Task<IActionResult> GetByCode(
+        [FromServices]ICupomService service, [FromBody]CupomData cupom)
+    {
+        var a = await service.GetByCodigo(cupom);
+        if(a == null)
+            return Ok(0);
+
+        var desconto = a.Desconto;
+        var errors = new List<string>();
+        if (errors.Count > 0)
+            return BadRequest(errors);
+
+        return Ok(desconto);
+    }
+
     [HttpDelete]
     [EnableCors("DefaultPolicy")]
     public IActionResult DeleteUser()

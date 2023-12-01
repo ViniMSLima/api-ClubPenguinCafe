@@ -33,11 +33,11 @@ public class CupomService : ICupomService
     public async Task<List<Cupom>> Get()
     => await this.ctx.Cupoms.ToListAsync();
 
-    public async Task<Cupom> GetByCodigo(string Codigo)
+    public async Task<Cupom> GetByCodigo(CupomData cupom)
     {
         var query =
             from u in this.ctx.Cupoms
-            where u.Codigo == Codigo
+            where u.Codigo == cupom.Codigo
             select u;
         
         return await query.FirstOrDefaultAsync();

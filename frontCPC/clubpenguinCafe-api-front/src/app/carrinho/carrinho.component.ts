@@ -5,16 +5,49 @@ import { FooterComponent } from '../footer/footer.component';
 import { ShopListService } from '../services/shop-list.service';
 import { Product } from '../model/Product';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { CupomService } from '../services/api-cupom.service';
 
 @Component({
   selector: 'app-carrinho',
   standalone: true,
-  imports: [CommonModule, FooterComponent, NavComponent],
+  imports: [
+    CommonModule,
+    FooterComponent,
+    NavComponent,
+    MatFormFieldModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+  ],
   templateUrl: './carrinho.component.html',
   styleUrl: './carrinho.component.css',
 })
 export class CarrinhoComponent implements OnInit {
   totalCompra: number = 0;
+  cupom: string = '';
+  disco: number = 0;
+
+  okCupom() {
+    var a = this.serviceCupom.getDesconto({
+      codigo: this.cupom,
+      desconto: '0',
+    }).subscribe( (data:any) => {
+      this.disco = parseFloat(<string>data);
+    })
+
+    if(this.disco == 0)
+    {
+      alert("ahjfjksdhbfjdh")
+    }
+    else
+    {
+
+      alert("ssssssssss")
+    }
+  }
 
   atualizarCarrinho(): void {
     localStorage.setItem('carrinho', JSON.stringify(this.carrinho));
@@ -26,7 +59,6 @@ export class CarrinhoComponent implements OnInit {
     });
     this.atualizarCarrinho();
     this.atualizarPreco();
-
   }
 
   menos(id: number) {
@@ -35,7 +67,6 @@ export class CarrinhoComponent implements OnInit {
     });
     this.atualizarCarrinho();
     this.atualizarPreco();
-
   }
 
   remover(item: Product) {
@@ -49,8 +80,8 @@ export class CarrinhoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: ShopListService
-  ) {}
+    private service: ShopListService,
+    private serviceCupom : CupomService  ) {}
 
   carrinho: Product[] = [];
 
@@ -74,5 +105,4 @@ export class CarrinhoComponent implements OnInit {
 
     this.totalCompra = parseFloat(this.totalCompra.toFixed(2));
   }
-
 }

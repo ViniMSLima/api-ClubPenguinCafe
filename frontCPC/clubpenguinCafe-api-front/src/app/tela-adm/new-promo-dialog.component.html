@@ -7,7 +7,7 @@
       <form class="example-form">
         <mat-form-field>
           <mat-label>Selecione o Produto</mat-label>
-          <mat-select [(value)]="produtoId" name="select" (selectionChange)="update($event)">
+          <mat-select [(value)]="produtoId" name="produtoId" (selectionChange)="update($event)">
             @for (item of list2; track item) {
             <mat-option [value]="item.id">{{ item.nome }}</mat-option>
             }
@@ -45,6 +45,6 @@
     </mat-card-content>
   
     <mat-card-actions align="end">
-      <button mat-button>Criar Promocao</button>
+      <button mat-button (click)="create()">Criar Promocao</button>
     </mat-card-actions>
   </mat-card>

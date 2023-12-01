@@ -15,4 +15,8 @@ export class CupomService {
     this.http.post('cupom/register', data)
       .subscribe(response => console.log(response))
   }
+
+  getDesconto(codigo: Cupom) {
+    return this.http.postObj("cupom/getdesconto", codigo);
+  }
 }

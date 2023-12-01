@@ -83,46 +83,9 @@ export class ShopListService
 
   constructor(private http: ApiClientService) { }
 
-  
-
   initItems()
   {
     return this.http.get("product")
-  }
-
-  teste() {
-    var storedData = localStorage.getItem('list');
-    // if (storedData !== null) return;
-    
-
-  //   let dadosIniciais: Product[] = [
-  //     { nome: 'burgae', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'juissa', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'sus', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'burgae', descricao: 'doudce', preco: 124.00 },
-  //     { nome: 'juxhfgissa', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'sus', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'burgae', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'juissa', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'sus', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'burgae', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'juissa', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'sus', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'burgae', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'juissa', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'sus', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'burgae', descricao: 'doudce', preco: 124.00 },
-  //     { nome: 'juxhfgissa', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'sus', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'burgae', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'juissa', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'sus', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'burgae', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'juissa', descricao: 'doce', preco: 12.00 },
-  //     { nome: 'sus', descricao: 'doce', preco: 12.00 },
-  //   ];
-
-  //   localStorage.setItem('list', JSON.stringify(dadosIniciais));
   }
 
   getItems() {

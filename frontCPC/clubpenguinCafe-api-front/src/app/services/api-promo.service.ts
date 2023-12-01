@@ -11,7 +11,7 @@ export class PromoService {
 
   register(data: Promo)
   {
-    this.http.post('product/register', data)
+    this.http.post('promo/register', data)
       .subscribe(response => alert(response))
   }
 }

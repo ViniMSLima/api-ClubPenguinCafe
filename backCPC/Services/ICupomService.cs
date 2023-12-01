@@ -9,6 +9,6 @@ using Model;
 public interface ICupomService
 {
     Task Create(CupomData cupom);
-    Task<Cupom> GetByCodigo(string Codigo);
+    Task<Cupom> GetByCodigo(CupomData cupom);
     Task<List<Cupom>> Get();
 }

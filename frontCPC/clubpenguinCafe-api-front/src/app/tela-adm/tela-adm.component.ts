@@ -114,6 +114,7 @@ export class NewProductDialog {
   styleUrl: './tela-adm.component.css',
 })
 export class NewPromoDialog implements OnInit {
+
   nome: string = '';
   descricao: string = '';
   preco: number = 0;

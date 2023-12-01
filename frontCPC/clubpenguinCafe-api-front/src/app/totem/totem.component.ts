@@ -48,7 +48,6 @@ export class TotemComponent implements OnInit {
       this.list2 = [];
       data.a.forEach((x: any) => this.list2.push(x));
     });
-    console.log(this.carrinho);
 
     var carregarCarrinho = localStorage.getItem('carrinho');
 
@@ -58,9 +57,7 @@ export class TotemComponent implements OnInit {
       return;
     }
     
-    console.log("carrinho carregado");
     this.carrinho = JSON.parse(carregarCarrinho);
-    console.log(this.carrinho);
   }
 
   produto = '';

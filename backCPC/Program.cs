@@ -22,7 +22,7 @@ builder.Services.AddSingleton<CryptoService>(p => new(){
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<ICupomService, CupomService>();
 builder.Services.AddSingleton<ISecurityService, SecurityService>();
-// builder.Services.AddSingleton<IPromoService, PromoService>();
+builder.Services.AddTransient<IPromoService, PromoService>();
 
 builder.Services.AddCors(options =>
 {

@@ -48,7 +48,7 @@ public class ProductController : ControllerBase
         if (errors.Count > 0)
             return BadRequest(errors);
 
-        return Ok(new {a});
+        return Ok(a);
     }
 
     [HttpDelete]

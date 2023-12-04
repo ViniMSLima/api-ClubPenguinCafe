@@ -41,28 +41,6 @@ export class ShopListService
   updateList(list: Product[]) {
     localStorage.setItem('list', JSON.stringify(list));
   }
-
-  EditItem(produto: string, newProduto: string, descricao: string) 
-  {
-    var list = localStorage.getItem('list');
-
-    if (list === null) 
-    {
-      console.log("Can't edit an item from null");
-      return;
-    }
-
-    let data: Product[] = JSON.parse(list);
-    data.forEach((element) => {
-      if (element.nome == produto)
-      {
-        element.nome = newProduto;
-        element.descricao = descricao;
-      }
-    });
-
-    localStorage.setItem('list', JSON.stringify(data));
-  }
   
   getPrecoByName(Name: string): number {
     var list = localStorage.getItem('list');
@@ -85,14 +63,21 @@ export class ShopListService
 
   initItems()
   {
-    return this.http.get("product")
+    var product = this.http.get("product");
+    return product;
   }
 
-  getItems() {
-    var storedData = localStorage.getItem('list');
-    if (storedData === null) return null;
-
-    let data = JSON.parse(storedData);
-    return data;
+  getPromocoes()
+  {
+    var promo = this.http.get("promo");
+    return promo;
   }
+
+  // getItems() {
+  //   var storedData = localStorage.getItem('list');
+  //   if (storedData === null) return null;
+
+  //   let data = JSON.parse(storedData);
+  //   return data;
+  // }
 }

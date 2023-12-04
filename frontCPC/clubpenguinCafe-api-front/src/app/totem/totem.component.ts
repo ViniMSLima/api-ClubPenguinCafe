@@ -22,47 +22,52 @@ export class TotemComponent implements OnInit {
 
   carrinho: Product[] = [];
 
-  addProdutoCarrinho(item: Product)
-  {
+  addProdutoCarrinho(item: Product) {
     var a = 0;
 
-    this.carrinho.forEach(element => {
-      if(element.nome == item.nome)
-      {
+    this.carrinho.forEach((element) => {
+      if (element.nome == item.nome) {
         element.quantidade++;
         a++;
       }
     });
 
-    if(a == 0)
-      this.carrinho.push(item);
+    if (a == 0) this.carrinho.push(item);
 
     localStorage.setItem('carrinho', JSON.stringify(this.carrinho));
   }
 
+  list: any = [];
+  list1: any = [];
   list2: any = [];
-  
+
+  onClickProdutos() {
+    this.list = this.list1;
+  }
+
+  onClickPromocoes() {
+    this.list = this.list2;
+  }
+
   ngOnInit(): void {
-    
     this.service.initItems().subscribe((data: any) => {
+      this.list1 = [];
+      data.forEach((x: any) => this.list1.push(x));
+      this.list = this.list1;
+    });
+
+    this.service.getPromocoes().subscribe((data: any) => {
       this.list2 = [];
-      data.a.forEach((x: any) => this.list2.push(x));
+      data.forEach((x: any) => this.list2.push(x));
     });
 
     var carregarCarrinho = localStorage.getItem('carrinho');
 
-    if (carregarCarrinho === null) 
-    {
+    if (carregarCarrinho === null) {
       console.log("Can't edit an item from null");
       return;
     }
-    
+
     this.carrinho = JSON.parse(carregarCarrinho);
   }
-
-  produto = '';
-  descricao = '';
-  preco = 0;
-  id: number = 0;
-  imagem: string = '';
 }

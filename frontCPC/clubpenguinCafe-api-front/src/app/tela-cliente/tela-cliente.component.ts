@@ -12,24 +12,36 @@ import { ShopListService } from '../services/shop-list.service';
   styleUrl: './tela-cliente.component.css',
 })
 export class TelaClienteComponent implements OnInit {
-  onClickPromocoes() {
-    throw new Error('Method not implemented.');
-  }
-  onClickProdutos() {
-    throw new Error('Method not implemented.');
-  }
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private service: ShopListService
-    ) {}
-    
-    list2: any = [];
-  ngOnInit(): void {
-    this.service.initItems().subscribe( (data:any) => {
-      this.list2 = []
-      data.a.forEach((x:any) => this.list2.push(x))
-    });
+  ) {}
+
+  list: any = [];
+  list1: any = [];
+  list2: any = [];
+
+  onClickProdutos() {
+    this.list = this.list1;
   }
 
+  onClickPromocoes() {
+    this.list = this.list2;
+  }
+
+  ngOnInit(): void {
+    this.service.initItems().subscribe((data: any) => {
+      this.list1 = [];
+      data.forEach((x: any) => this.list1.push(x));
+      this.list = this.list1;
+    });
+
+    this.service.getPromocoes().subscribe((data: any) => {
+      this.list2 = [];
+      data.forEach((x: any) => this.list2.push(x));
+    });
+
+    
+  }
 }

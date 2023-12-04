@@ -56,14 +56,14 @@
   </div>
 
   <div class="options">
-    <button class="button">Produtos</button>
-    <button class="button">Promoções</button>
+    <button class="button" (click) = "onClickProdutos()">Produtos</button>
+    <button class="button" (click) = "onClickPromocoes()">Promoções</button>
     <button class="button"></button>
   </div>
 
   <div style="overflow-y: scroll; height: 58%; width: 100%">
     <div class="options2">
-      @for (item of list2; track item) {
+      @for (item of list; track item) {
       <div class="card">
         <img
           src="../../assets/imagens/canecaCafeCP.png"

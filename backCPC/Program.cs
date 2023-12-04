@@ -23,6 +23,7 @@ builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<ICupomService, CupomService>();
 builder.Services.AddSingleton<ISecurityService, SecurityService>();
 builder.Services.AddTransient<IPromoService, PromoService>();
+builder.Services.AddTransient<IOrderService, OrderService>();
 
 builder.Services.AddCors(options =>
 {

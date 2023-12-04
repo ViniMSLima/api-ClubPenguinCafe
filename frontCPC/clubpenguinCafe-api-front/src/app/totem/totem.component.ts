@@ -22,7 +22,7 @@ export class TotemComponent implements OnInit {
 
   carrinho: Product[] = [];
 
-  addProdutoCarrinho(item: Product) {
+  addProdutoCarrinho(item: any) {
     var a = 0;
 
     this.carrinho.forEach((element) => {
@@ -32,33 +32,49 @@ export class TotemComponent implements OnInit {
       }
     });
 
-    if (a == 0) this.carrinho.push(item);
+    var precoPromocao = item.preco;
+
+    this.promocoes.forEach((promocao: any) => {
+      if (promocao.nome == item.nome) {
+        precoPromocao = promocao.preco;
+      }
+    });
+
+    if (a == 0)
+      this.carrinho.push({
+        id: item.id,
+        imagem: 'null',
+        quantidade: 1,
+        nome: item.nome,
+        preco: precoPromocao,
+        descricao: item.descricao,
+      });
 
     localStorage.setItem('carrinho', JSON.stringify(this.carrinho));
   }
 
   list: any = [];
-  list1: any = [];
-  list2: any = [];
+  produtos: any = [];
+  promocoes: any = [];
 
   onClickProdutos() {
-    this.list = this.list1;
+    this.list = this.produtos;
   }
 
   onClickPromocoes() {
-    this.list = this.list2;
+    this.list = this.promocoes;
   }
 
   ngOnInit(): void {
     this.service.initItems().subscribe((data: any) => {
-      this.list1 = [];
-      data.forEach((x: any) => this.list1.push(x));
-      this.list = this.list1;
+      this.produtos = [];
+      data.forEach((x: any) => this.produtos.push(x));
+      this.list = this.produtos;
     });
 
     this.service.getPromocoes().subscribe((data: any) => {
-      this.list2 = [];
-      data.forEach((x: any) => this.list2.push(x));
+      this.promocoes = [];
+      data.forEach((x: any) => this.promocoes.push(x));
     });
 
     var carregarCarrinho = localStorage.getItem('carrinho');

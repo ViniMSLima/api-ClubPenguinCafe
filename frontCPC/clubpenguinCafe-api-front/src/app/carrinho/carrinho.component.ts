@@ -46,11 +46,11 @@ export class CarrinhoComponent implements OnInit {
          }
          else
          {
-           alert(this.disco * 100 + "% de desconto")
            this.totalCompra = this.totalCompra * (1 - this.disco);
            this.totalCompra = parseFloat(this.totalCompra.toFixed(2));
            this.isCupom = true;
-         }
+           alert(this.disco * 100 + "% de desconto")
+          }
        }
        else
          alert("Já foi aplicado o desconto de cupom!");

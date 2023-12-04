@@ -38,13 +38,13 @@ Obs: 'Tem tela/Tem Interface' = Possui parte visual, mesmo sem funcionar.
 - [X] É possível adicionar itens em uma sacola.
 - [ ] Ao finalizar a compra o pedido é realmente registrado no banco de dados.
 - [X] É possível ver o custo total do pedido.
-- [ ] É possível adicionar uma promoção com um código promocional.
-- [ ] Promoção afeta o custo total do pedido.
+- [X] É possível adicionar uma promoção com um código promocional.
+- [X] Promoção afeta o custo total do pedido.
 - [ ] Pedidos podem ser vistos na tela de pedidos.
 - [ ] É possível editar um pedido como 'Entregue' de alguma forma.
 - [ ] Apenas os pedidos corretos aparecem na tela de pedidos (finalizados, porém não entregues).
 - [X] Usuário é capaz de ver as promoções no sistema.
-- [ ] Usuário é capaz de gerar um código de promoção válido.
-- [ ] Sistema realmente válida código de promoção.
+- [X] Usuário é capaz de gerar um código de promoção válido.
+- [X] Sistema realmente válida código de promoção.
 
-FALTAM 9
+FALTAM 6

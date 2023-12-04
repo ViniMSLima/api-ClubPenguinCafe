@@ -7,6 +7,7 @@ import { PedidosComponent } from './pedidos/pedidos.component';
 import { LoginComponent } from './login/login.component';
 import { TelaClienteComponent } from './tela-cliente/tela-cliente.component';
 import { TelaAdmComponent } from './tela-adm/tela-adm.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
   // {
@@ -40,6 +41,10 @@ export const routes: Routes = [
   {
     path: 'telaadm',
     component: TelaAdmComponent
+  },
+  {
+    path: 'telaadm/dashboard',
+    component: DashboardComponent
   },
   // { path: '**', component: NotFoundComponent}
 ];

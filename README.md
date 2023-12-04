@@ -45,6 +45,6 @@ Obs: 'Tem tela/Tem Interface' = Possui parte visual, mesmo sem funcionar.
 - [ ] Apenas os pedidos corretos aparecem na tela de pedidos (finalizados, porém não entregues).
 - [X] Usuário é capaz de ver as promoções no sistema.
 - [X] Usuário é capaz de gerar um código de promoção válido.
-- [X] Sistema realmente válida código de promoção.
+- [X] Sistema realmente valida código de promoção.
 
-FALTAM 6
+FALTAM 5

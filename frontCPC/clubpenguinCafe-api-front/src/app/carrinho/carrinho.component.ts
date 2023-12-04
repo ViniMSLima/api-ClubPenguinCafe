@@ -29,6 +29,7 @@ export class CarrinhoComponent implements OnInit {
   totalCompra: number = 0;
   cupom: string = '';
   disco: number = 0;
+  isCupom: boolean = false;
 
   okCupom() {
     var a = this.serviceCupom.getDesconto({
@@ -38,15 +39,23 @@ export class CarrinhoComponent implements OnInit {
       this.disco = parseFloat(<string>data);
     })
 
-    if(this.disco == 0)
-    {
-      alert("ahjfjksdhbfjdh")
-    }
-    else
+    if(this.isCupom == false)
     {
 
-      alert("ssssssssss")
+      if(this.disco == 0)
+      {
+        alert("CUPOM INVÁLIDO, TENTE NOVAMENTE!")
+      }
+      else
+      {
+        alert(this.disco * 100 + "% de desconto")
+        this.totalCompra = this.totalCompra * (1 - this.disco);
+        this.totalCompra = parseFloat(this.totalCompra.toFixed(2));
+        this.isCupom = true;
+      }
     }
+    else
+      alert("Já foi aplicado o desconto de cupom!");
   }
 
   atualizarCarrinho(): void {

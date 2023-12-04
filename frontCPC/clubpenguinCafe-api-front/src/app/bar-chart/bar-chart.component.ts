@@ -14,11 +14,11 @@ export class BarChartComponent implements OnInit {
     this.createChart();
   }
 
-  public chart: any;
+  public chart1: any;
 
   createChart(){
   
-    this.chart = new Chart("MyChart", {
+    this.chart1 = new Chart("MyChart1", {
       type: 'bar', //this denotes tha type of chart
 
       data: {// values on X-Axis

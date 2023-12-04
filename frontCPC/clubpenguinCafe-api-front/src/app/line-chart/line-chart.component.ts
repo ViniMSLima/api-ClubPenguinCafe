@@ -16,7 +16,6 @@ export class LineChartComponent implements OnInit{
     this.createChart();
   }
 
-  
   createChart(){
   
     this.chart = new Chart("MyChart", {

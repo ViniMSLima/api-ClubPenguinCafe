@@ -27,6 +27,9 @@ import { CupomService } from '../services/api-cupom.service';
   styleUrl: './tela-adm.component.css',
 })
 export class TelaAdmComponent {
+  dashboard() {
+    this.router.navigate(['telaadm/dashboard']);
+  }
   addCupom() {
     this.dialog.open(NewCupomDialog);
 

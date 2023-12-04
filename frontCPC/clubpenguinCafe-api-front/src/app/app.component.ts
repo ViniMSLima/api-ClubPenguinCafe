@@ -7,6 +7,7 @@ import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AlertController } from '@ionic/angular'
 
 @Component({
   selector: 'app-root',

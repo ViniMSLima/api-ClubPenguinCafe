@@ -32,31 +32,30 @@ export class CarrinhoComponent implements OnInit {
   isCupom: boolean = false;
 
   okCupom() {
-    var a = this.serviceCupom.getDesconto({
-      codigo: this.cupom,
-      desconto: '0',
+    this.serviceCupom.getDesconto({
+       codigo: this.cupom,
+       desconto: '0',
     }).subscribe( (data:any) => {
-      this.disco = parseFloat(<string>data);
+       this.disco = parseFloat(<string>data);
+   
+       if(this.isCupom == false)
+       {
+         if(this.disco == 0)
+         {
+           alert("CUPOM INVÁLIDO, TENTE NOVAMENTE!")
+         }
+         else
+         {
+           alert(this.disco * 100 + "% de desconto")
+           this.totalCompra = this.totalCompra * (1 - this.disco);
+           this.totalCompra = parseFloat(this.totalCompra.toFixed(2));
+           this.isCupom = true;
+         }
+       }
+       else
+         alert("Já foi aplicado o desconto de cupom!");
     })
-
-    if(this.isCupom == false)
-    {
-
-      if(this.disco == 0)
-      {
-        alert("CUPOM INVÁLIDO, TENTE NOVAMENTE!")
-      }
-      else
-      {
-        alert(this.disco * 100 + "% de desconto")
-        this.totalCompra = this.totalCompra * (1 - this.disco);
-        this.totalCompra = parseFloat(this.totalCompra.toFixed(2));
-        this.isCupom = true;
-      }
-    }
-    else
-      alert("Já foi aplicado o desconto de cupom!");
-  }
+   }
 
   atualizarCarrinho(): void {
     localStorage.setItem('carrinho', JSON.stringify(this.carrinho));

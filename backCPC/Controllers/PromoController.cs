@@ -41,14 +41,14 @@ public class PromoController : ControllerBase
     [HttpGet()]
     [EnableCors("DefaultPolicy")]
     public async Task<IActionResult> Get(
-        [FromServices]ICupomService service)
+        [FromServices]IPromoService service)
     {
         var a = await service.Get();
         var errors = new List<string>();
         if (errors.Count > 0)
             return BadRequest(errors);
 
-        return Ok(new {a});
+        return Ok(a);
     }
 
     [HttpDelete]

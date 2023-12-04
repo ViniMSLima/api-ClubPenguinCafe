@@ -23,7 +23,7 @@ export const routes: Routes = [
     component: CarrinhoComponent,
   },
   {
-    path: 'totem/telainicial',
+    path: '',
     component: TelaInicialComponent,
   },
   {

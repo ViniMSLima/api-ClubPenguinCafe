@@ -10,5 +10,5 @@ public interface IPromoService
 {
     Task Create(PromoData promo);
     Task<Promocao> GetByName(string Nome);
-    Task<List<Promocao>> Get();
+    Task<List<PromoProdData>> Get();
 }

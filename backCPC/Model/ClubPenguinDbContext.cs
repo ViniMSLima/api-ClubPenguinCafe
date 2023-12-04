@@ -106,12 +106,13 @@ public partial class ClubPenguinDbContext : DbContext
 
         modelBuilder.Entity<Promocao>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Promocao__3214EC277A8146E7");
+            entity.HasKey(e => e.Id).HasName("PK__Promocao__3214EC27DEAF56E0");
 
             entity.ToTable("Promocao");
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Descricao)
+                .IsRequired()
                 .HasMaxLength(80)
                 .IsUnicode(false);
             entity.Property(e => e.Nome)
@@ -122,7 +123,7 @@ public partial class ClubPenguinDbContext : DbContext
 
             entity.HasOne(d => d.Produto).WithMany(p => p.Promocaos)
                 .HasForeignKey(d => d.ProdutoId)
-                .HasConstraintName("FK__Promocao__Produt__44FF419A");
+                .HasConstraintName("FK__Promocao__Produt__628FA481");
         });
 
         modelBuilder.Entity<Usuario>(entity =>

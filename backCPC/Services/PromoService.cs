@@ -23,7 +23,7 @@ public class PromoService : IPromoService
             Nome = data.Nome,
             Preco = data.Preco,
             Descricao = data.Descricao,
-            Quantidade = data.Quantidade,
+            Quantidade = 1,
             ProdutoId = data.ProdutoId
         };
 
@@ -31,17 +31,25 @@ public class PromoService : IPromoService
         await this.ctx.SaveChangesAsync();
     }
 
+    public Task<Promocao> GetByName(string Nome)
+    {
+        throw new System.NotImplementedException();
+    }
 
-    public async Task<List<Promocao>> Get()
-        => await this.ctx.Promocaos.ToListAsync();
-   
-    public async Task<Promocao> GetByName(string name)
+    public async Task<List<PromoProdData>> Get() 
     {
         var query =
-            from u in this.ctx.Promocaos
-            where u.Nome == name
-            select u;
+            from prod in this.ctx.Produtos
+            join promo in this.ctx.Promocaos
+            on prod.Id equals promo.ProdutoId
+            select new PromoProdData
+            {
+                ProdutoId = prod.Id,
+                Nome =  prod.Nome,
+                Descricao = prod.Descricao,
+                Preco = promo.Preco
+            };
         
-        return await query.FirstOrDefaultAsync();
+        return await query.ToListAsync();
     }
 }

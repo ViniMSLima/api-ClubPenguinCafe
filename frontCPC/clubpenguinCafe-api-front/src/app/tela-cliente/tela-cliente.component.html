@@ -14,6 +14,7 @@
     <div>
         <button class="nav-button" (click)="onClickProdutos()" style="font-weight: bold;">Produtos </button>
         <button class="nav-button" (click)="onClickPromocoes()" style="font-weight: bold;">Promoções</button>
+        <button class="nav-button" (click)="onClickCupons()" style="font-weight: bold;">Cupons</button>
     </div>
     <div>
         User: salve salve familia
@@ -21,23 +22,42 @@
 </div>
 </nav>
 
-<div>
-  <div class="options2">
-    @for (item of list; track item) {
-    <div class="card">
-      <img
-        src="../../assets/imagens/canecaCafeCP.png"
-        class="card-img-top"
-        alt="..."
-      />
-      <div class="card-body">
-        <div>
-            <h5 class="card-title">{{item.nome}}</h5>
-            <p class="card-text">Descrição: {{item.descricao}}</p>
+@if(booleano == false) {
+  <div>
+    <div class="options2">
+      @for (item of list; track item) {
+        <div class="card">
+          <img
+          src="../../assets/imagens/canecaCafeCP.png"
+          class="card-img-top"
+          alt="..."
+          />
+          <div class="card-body">
+            <div>
+              <h5 class="card-title">{{item.nome}}</h5>
+              <p class="card-text">Descrição: {{item.descricao}}</p>
+            </div>
+            <p class="card-price">R$ {{item.preco}}</p>
+          </div>
         </div>
-        <p class="card-price">R$ {{item.preco}}</p>
-      </div>
+      }
     </div>
-    }
   </div>
-</div>
+}
+@else {
+  <div>
+    <div class="options2">
+      @for (item of list; track item) {
+        <div class="card">
+          <div class="card-body">
+            <div>
+              <h5 class="card-title">{{item.codigo}}</h5>
+              <p class="card-text">Desconto: {{(item.desconto * 100)}}%</p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+}
+  

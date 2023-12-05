@@ -73,6 +73,12 @@ export class ShopListService
     return promo;
   }
 
+  getCupons()
+  {
+    var cupom = this.http.get("cupom");
+    return cupom;
+  }
+
   // getItems() {
   //   var storedData = localStorage.getItem('list');
   //   if (storedData === null) return null;

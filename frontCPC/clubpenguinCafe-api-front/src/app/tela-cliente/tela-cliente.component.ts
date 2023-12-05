@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, booleanAttribute } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../model/Product';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -21,13 +21,23 @@ export class TelaClienteComponent implements OnInit {
   list: any = [];
   list1: any = [];
   list2: any = [];
+  list3: any = [];
+
+  booleano: boolean = false;
 
   onClickProdutos() {
     this.list = this.list1;
+    this.booleano = false;
   }
 
   onClickPromocoes() {
     this.list = this.list2;
+    this.booleano = false;
+  }
+
+  onClickCupons() {
+    this.list = this.list3;
+    this.booleano = true;
   }
 
   ngOnInit(): void {
@@ -42,6 +52,9 @@ export class TelaClienteComponent implements OnInit {
       data.forEach((x: any) => this.list2.push(x));
     });
 
-    
+    this.service.getCupons().subscribe((data: any) => {
+      this.list3 = [];
+      data.a.forEach((x: any) => this.list3.push(x));
+    });
   }
 }

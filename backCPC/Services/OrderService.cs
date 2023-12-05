@@ -31,8 +31,10 @@ public class OrderService : IOrderService
         this.ctx.Add(pedido);
         await this.ctx.SaveChangesAsync();
 
-        var a = this.ctx.Pedidos.CountAsync();
+        // var a = this.ctx.Pedidos.CountAsync();
     }
+
+    
 
 
     public async Task<List<Pedido>> Get()

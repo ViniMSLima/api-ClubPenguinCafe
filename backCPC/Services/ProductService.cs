@@ -22,12 +22,13 @@ public class ProductService : IProductService
 
     public async Task Create(ProductData data)
     {
-        Produto produto = new Produto();
-
-        produto.Nome = data.Nome;
-        produto.Preco = data.Preco;
-        produto.Descricao = data.Descricao;
-        produto.Quantidade = (int)(data.Quantidade);
+        Produto produto = new()
+        {
+            Nome = data.Nome,
+            Preco = data.Preco,
+            Descricao = data.Descricao,
+            Quantidade = (int)data.Quantidade
+        };
 
         this.ctx.Add(produto);
         await this.ctx.SaveChangesAsync();

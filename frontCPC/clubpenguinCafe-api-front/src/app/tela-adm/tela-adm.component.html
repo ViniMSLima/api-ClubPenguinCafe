@@ -1,7 +1,11 @@
 <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#" style="font-weight: bold">
-      <audio src="../../assets/audio/Club Penguin - Coffee Shop [Loop High Quality] (1) - Copia.mp4" autoplay loop></audio>
+      <audio
+        src="../../assets/audio/Club Penguin - Coffee Shop [Loop High Quality] (1) - Copia.mp4"
+        autoplay
+        loop
+      ></audio>
       <img
         src="../../assets/imagens/canecaCafeCP.png"
         alt="Logo"
@@ -19,49 +23,37 @@
   style="
     width: 100%;
     height: 100%;
-    justify-content: center;
-    align-items: center;
     display: flex;
     flex-direction: column;
   "
 >
-  <button
-    class="button"
-    type="button"
-    (click)="addProduto()"
-  >
-    Adicionar Produtos
-  </button>
-  <button
-    class="button"
-    type="button"
-    (click)="addPromo()"
-  >
-    Adicionar Promoção
-  </button>
-  <button
-    class="button"
-    type="button"
-    (click)="addCupom()"
-  >
-    Adicionar Cupom
-  </button>
-  <button
-    class="button"
-    type="button"
-    (click)="dashboard()"
-  >
-    Dashboard
-  </button>
-  <button class="button" mat-flat-button color="primary"
-              (click)="registrar()">
-              Criar Nova Conta
-          </button>
-  <a href="http://localhost:4200/totem/telainicial" class="button" type="button"
+  <div style="width: 100%; height: 200px; display: flex; justify-content: center; margin: 10px;">
+    <button class="button" type="button" (click)="addProduto()">
+      Adicionar Produtos
+    </button>
+    <button class="button" type="button" (click)="addPromo()">
+      Adicionar Promoção
+    </button>
+  </div>
+  <div style="width: 100%; height: 200px; display: flex; justify-content: center; margin: 10px;">
+    <button class="button" type="button" (click)="addCupom()">
+      Adicionar Cupom
+    </button>
+    <button class="button" type="button" (click)="dashboard()">Dashboard</button>
+  </div>
+  <div style="width: 100%; height: 200px; display: flex; justify-content: center; margin: 10px;">
+    <button class="button" mat-flat-button color="primary" (click)="registrar()">
+      Criar Nova Conta
+    </button>
+    <a href="http://localhost:4200/totem/telainicial" class="button" type="button" style="font-weight: bold;"
     >Totem</a
-  >
-  
-
+    >
+  </div>
+  <div style="width: 100%; height: 200px; display: flex; justify-content: center; margin: 10px;">
+    <a href="http://localhost:4200/telacliente" target="_blank" class="button" type="button" style="font-weight: bold;"
+    >Tela cliente</a
+    >
+  </div>
 </div>
 
 <!-- 

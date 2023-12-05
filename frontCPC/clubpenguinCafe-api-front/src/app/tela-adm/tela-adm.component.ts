@@ -129,11 +129,11 @@ export class NewPromoDialog implements OnInit {
     private service: ShopListService
   ) {}
 
-  list2: any = [];
+  produtos: any = [];
   ngOnInit(): void {
     this.service.initItems().subscribe((data: any) => {
-      this.list2 = [];
-      data.a.forEach((x: any) => this.list2.push(x));
+      this.produtos = [];
+      data.forEach((x: any) => this.produtos.push(x));
     });
   }
 
@@ -150,7 +150,7 @@ export class NewPromoDialog implements OnInit {
 
   update(event : any) 
   {
-    this.list2.forEach((element : Product) => {
+    this.produtos.forEach((element : Product) => {
       if(element.id == event.value)
         this.preco = element.preco
     });
@@ -184,7 +184,6 @@ export class NewCupomDialog {
     private client: CupomService,
     private service: ShopListService
   ) {}
-  list: any;
 
   create() {
     this.client.register({

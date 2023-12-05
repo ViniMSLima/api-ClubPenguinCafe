@@ -18,8 +18,8 @@ using Trevisharp.Security.Jwt;
 using System.ComponentModel;
 
 [ApiController]
-[Route("product")]
-public class ProductController : ControllerBase
+[Route("produto")]
+public class ProdutoController : ControllerBase
 {
     [HttpPost("register")]
     [EnableCors("DefaultPolicy")]

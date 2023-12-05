@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Product } from '../model/Product';
 import { ProductService } from './api-product.service';
 import { ApiClientService } from './api-client.service';
+import { TipoEspecial } from '../model/tipo-especial';
 
 @Injectable({
   providedIn: 'root',
@@ -63,7 +64,7 @@ export class ShopListService
 
   initItems()
   {
-    var product = this.http.get("product");
+    var product = this.http.get("produto");
     return product;
   }
 
@@ -79,11 +80,9 @@ export class ShopListService
     return cupom;
   }
 
-  // getItems() {
-  //   var storedData = localStorage.getItem('list');
-  //   if (storedData === null) return null;
+  addPedido(obj: TipoEspecial[])
+  {
+    this.http.post("pedido/register", obj).subscribe(response => alert("PEDIDO REALIZADO!"));
+  }
 
-  //   let data = JSON.parse(storedData);
-  //   return data;
-  // }
 }

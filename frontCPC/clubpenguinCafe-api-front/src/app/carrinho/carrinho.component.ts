@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { CupomService } from '../services/api-cupom.service';
+import { TipoEspecial } from '../model/tipo-especial';
 
 @Component({
   selector: 'app-carrinho',
@@ -30,6 +31,21 @@ export class CarrinhoComponent implements OnInit {
   cupom: string = '';
   disco: number = 0;
   isCupom: boolean = false;
+  
+  adicionarPedido() {
+    var list : any= []
+
+    this.carrinho.forEach(element => {
+      var item: TipoEspecial = {
+        Id: element.id,
+        Quantidade: element.quantidade,
+        Total: this.totalCompra 
+      };
+      list.push(item);
+    });
+
+    this.service.addPedido(list);
+  }
 
   okCupom() {
     this.serviceCupom.getDesconto({

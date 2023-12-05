@@ -11,5 +11,7 @@ public partial class Pedido
 
     public bool Entregue { get; set; }
 
+    public double? Preco { get; set; }
+
     public virtual ICollection<ProdutosPedido> ProdutosPedidos { get; } = new List<ProdutosPedido>();
 }

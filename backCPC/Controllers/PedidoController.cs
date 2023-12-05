@@ -18,27 +18,34 @@ using Trevisharp.Security.Jwt;
 using System.ComponentModel;
 
 [ApiController]
-[Route("order")]
-public class OrderController : ControllerBase
+[Route("pedido")]
+public class PedidoController : ControllerBase
 {
     [HttpPost("register")]
     [EnableCors("DefaultPolicy")]
     public async Task<IActionResult> Create(
-        [FromServices]IOrderService service)
+        [FromBody] TipoEspecial[] carrinho,
+        [FromServices]IPedidoService service)
     {
         var errors = new List<string>();
 
         if (errors.Count > 0)
             return BadRequest(errors);
 
-        await service.Create();
+        var id = await service.Create(carrinho[0].Total);
+
+        foreach(TipoEspecial p in carrinho)
+        {
+            await service.CreateProdutoPedido(p, id);
+        }
+
         return Ok();
     }
 
     [HttpGet("")]
     [EnableCors("DefaultPolicy")]
     public async Task<IActionResult> Get(
-        [FromServices]IOrderService service)
+        [FromServices]IPedidoService service)
     {
         var a = await service.Get();
         var errors = new List<string>();

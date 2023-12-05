@@ -46,7 +46,7 @@ public class PromoService : IPromoService
             {
                 ProdutoId = prod.Id,
                 Nome =  prod.Nome,
-                Descricao = prod.Descricao,
+                Descricao = promo.Descricao,
                 Preco = promo.Preco
             };
         

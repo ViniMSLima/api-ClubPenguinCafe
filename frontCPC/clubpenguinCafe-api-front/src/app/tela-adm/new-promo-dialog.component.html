@@ -8,7 +8,7 @@
         <mat-form-field>
           <mat-label>Selecione o Produto</mat-label>
           <mat-select [(value)]="produtoId" name="produtoId" (selectionChange)="update($event)">
-            @for (item of list2; track item) {
+            @for (item of produtos; track item) {
             <mat-option [value]="item.id">{{ item.nome }}</mat-option>
             }
           </mat-select>

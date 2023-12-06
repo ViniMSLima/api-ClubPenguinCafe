@@ -59,6 +59,16 @@ public class PedidoService : IPedidoService
         await this.ctx.SaveChangesAsync();
     }
 
+    private async Task<Pedido> getOrder(int order_id)
+    {
+        var orders = 
+            from order in this.ctx.Pedidos
+            where order.Id == order_id
+            select order;
+
+        return await orders.FirstOrDefaultAsync();
+    }
+
     public async Task<List<CozinhaData>> Get()
     {
         var query1 =
@@ -81,7 +91,9 @@ public class PedidoService : IPedidoService
             {
                 OrderId = ped.Id,
                 ProdName = prod.Nome,
-                Quantidade = prodPed.Quantidade
+                Quantidade = prodPed.Quantidade,
+                Pronto = ped.Pronto,
+                Entregue = ped.Entregue
             };
 
         var a = await query777777.ToListAsync();
@@ -95,9 +107,6 @@ public class PedidoService : IPedidoService
 
         var c = orders.ToList();
 
-
-        System.Console.WriteLine(a[0].OrderId);
-
         List<CozinhaData> list = new();
 
         foreach (var item in c)
@@ -107,10 +116,13 @@ public class PedidoService : IPedidoService
                 where member.OrderId == item.OrderId
                 select new {
                     Nome = member.ProdName,
-                    Quantidade = member.Quantidade
+                    Quantidade = member.Quantidade,
+                    Pronto = member.Pronto,
+                    Entregue = member.Entregue
                 };
 
             var b = query.ToList();
+
             string[] Nomes = b.Select(x=>x.Nome).ToArray();
             int[] qtds = b.Select(x=>x.Quantidade).ToArray();
 
@@ -118,10 +130,30 @@ public class PedidoService : IPedidoService
             {
                 OrderId = item.OrderId,
                 Produto = Nomes,
-                Quantidade = qtds
+                Quantidade = qtds,
+                Pronto = b[0].Pronto,
+                Entregue = b[0].Entregue
             };
             list.Add(kd);
         }
         return list;
+    }
+
+    public async Task Finalizar(int pedido_id)
+    {
+        var pedido = await getOrder(pedido_id) ?? throw new Exception ("Pedido nao existe");
+        pedido.Pronto = !pedido.Pronto;
+
+        this.ctx.Update(pedido);
+        await this.ctx.SaveChangesAsync();
+    }
+
+    public async Task Entregar(int pedido_id)
+    {
+        var pedido = await getOrder(pedido_id) ?? throw new Exception ("Pedido nao existe");
+        pedido.Entregue = !pedido.Entregue;
+
+        this.ctx.Update(pedido);
+        await this.ctx.SaveChangesAsync();
     }
 }

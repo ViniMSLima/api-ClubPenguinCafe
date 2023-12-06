@@ -61,4 +61,32 @@ public class PedidoController : ControllerBase
     {
         throw new NotImplementedException();
     }
+
+    [HttpPost("pronto")]
+    [EnableCors("DefaultPolicy")]
+    public async Task<IActionResult> GetPronto(
+        [FromServices]IPedidoService service,
+        [FromBody]int pedido_id)
+    {
+        await service.Finalizar(pedido_id);
+        var errors = new List<string>();
+        if (errors.Count > 0)
+            return BadRequest(errors);
+
+        return Ok();
+    }
+
+    [HttpPost("entregue")]
+    [EnableCors("DefaultPolicy")]
+    public async Task<IActionResult> GetEntregue(
+        [FromServices]IPedidoService service,
+        [FromBody]int pedido_id)
+    {
+        await service.Entregar(pedido_id);
+        var errors = new List<string>();
+        if (errors.Count > 0)
+            return BadRequest(errors);
+
+        return Ok();
+    }
 }

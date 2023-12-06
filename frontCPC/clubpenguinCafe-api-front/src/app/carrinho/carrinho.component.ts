@@ -31,47 +31,49 @@ export class CarrinhoComponent implements OnInit {
   cupom: string = '';
   disco: number = 0;
   isCupom: boolean = false;
-  
+
   adicionarPedido() {
-    var list : any= []
+    var list: any = [];
 
-    this.carrinho.forEach(element => {
-      var item: TipoEspecial = {
-        Id: element.id,
-        Quantidade: element.quantidade,
-        Total: this.totalCompra 
-      };
-      list.push(item);
-    });
+    if (this.carrinho.length > 0) {
+      this.carrinho.forEach((element) => {
+        var item: TipoEspecial = {
+          Id: element.id,
+          Quantidade: element.quantidade,
+          Total: this.totalCompra,
+        };
+        list.push(item);
+      });
 
-    this.service.addPedido(list);
+      this.service.addPedido(list);
+    }
+    else
+    {
+      alert("NÃO PODE ADICIONAR UM PEDIDO VAZIO!!!");
+    }
   }
 
   okCupom() {
-    this.serviceCupom.getDesconto({
-       codigo: this.cupom,
-       desconto: '0',
-    }).subscribe( (data:any) => {
-       this.disco = parseFloat(<string>data);
-   
-       if(this.isCupom == false)
-       {
-         if(this.disco == 0)
-         {
-           alert("CUPOM INVÁLIDO, TENTE NOVAMENTE!")
-         }
-         else
-         {
-           this.totalCompra = this.totalCompra * (1 - this.disco);
-           this.totalCompra = parseFloat(this.totalCompra.toFixed(2));
-           this.isCupom = true;
-           alert(this.disco * 100 + "% de desconto")
+    this.serviceCupom
+      .getDesconto({
+        codigo: this.cupom,
+        desconto: '0',
+      })
+      .subscribe((data: any) => {
+        this.disco = parseFloat(<string>data);
+
+        if (this.isCupom == false) {
+          if (this.disco == 0) {
+            alert('CUPOM INVÁLIDO, TENTE NOVAMENTE!');
+          } else {
+            this.totalCompra = this.totalCompra * (1 - this.disco);
+            this.totalCompra = parseFloat(this.totalCompra.toFixed(2));
+            this.isCupom = true;
+            alert(this.disco * 100 + '% de desconto');
           }
-       }
-       else
-         alert("Já foi aplicado o desconto de cupom!");
-    })
-   }
+        } else alert('Já foi aplicado o desconto de cupom!');
+      });
+  }
 
   atualizarCarrinho(): void {
     localStorage.setItem('carrinho', JSON.stringify(this.carrinho));
@@ -105,7 +107,8 @@ export class CarrinhoComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private service: ShopListService,
-    private serviceCupom : CupomService  ) {}
+    private serviceCupom: CupomService
+  ) {}
 
   carrinho: Product[] = [];
 

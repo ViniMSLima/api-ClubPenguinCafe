@@ -9,7 +9,6 @@ import { TipoEspecial } from '../model/tipo-especial';
 })
 export class ShopListService 
 {
-
   carrinho: Product[] = [];
 
   initCarrinho() {
@@ -80,9 +79,24 @@ export class ShopListService
     return cupom;
   }
 
+  getPedidos() {
+    var pedidos = this.http.get("pedido");
+    return pedidos;
+  }
+
   addPedido(obj: TipoEspecial[])
   {
     this.http.post("pedido/register", obj).subscribe(response => alert("PEDIDO REALIZADO!"));
+  }
+
+  pedidoPronto(obj: number)
+  {
+    this.http.post("pedido/pronto", obj).subscribe(response => alert("PEDIDO PRONTO!"));
+  }
+
+  pedidoEntregue(obj: number)
+  {
+    this.http.post("pedido/entregue", obj).subscribe(response => alert("PEDIDO ENTREGUE!"));
   }
 
 }

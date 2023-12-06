@@ -1,34 +1,56 @@
-<br>
+<br />
 <div class="pedidos">
-  <div style="display: flex;">
-    <img style="height: 50px; margin: 10px;" src="../../assets/imagens/canecaCafeCP.png">
-    <h2 class="numDePedidos">PEDIDOS RESTANTES: 237</h2>
-    <img style="height: 50px; margin: 10px;" src="../../assets/imagens/copoCafeCP.png">
+  <div style="display: flex">
+    <img
+      style="height: 50px; margin: 10px"
+      src="../../assets/imagens/canecaCafeCP.png"
+    />
+    <h2 class="numDePedidos">PEDIDOS RESTANTES: {{ pedidosRestantes }}</h2>
+    <img
+      style="height: 50px; margin: 10px"
+      src="../../assets/imagens/copoCafeCP.png"
+    />
   </div>
-  <div class="card" style="width: 18rem">
-    <div class="card-body">
-      <h5 class="card-title">Order: num</h5>
-      <p class="card-text">
-        Item 1...
-      </p>
-      <p class="card-text">
-        Item 2...
-      </p>
-      <p class="card-text">
-        Item 3...
-      </p>
-      <button>
-        <h2>
-          Finalizar
-        </h2>
-      </button>
-      <br>
-      <br>
-      <button>
-        <h2>
-          Entregar
-        </h2>
-      </button>
+  @for (item of list; track item) 
+  { 
+    @if(item.pronto == false) {
+
+    <div class="card" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title" style="font-size: medium">
+          PEDIDO: {{ item.orderId }}
+        </h5>
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            font-weight: bold;
+            font-size: large;
+          "
+        >
+          <div>
+            @for (produtos of item.produto; track produtos) {
+            <p class="card-text">{{ produtos }}</p>
+            }
+          </div>
+          <div>
+            @for (quantidades of item.quantidade; track quantidades) {
+            <p class="card-text">{{ quantidades }}</p>
+            }
+          </div>
+        </div>
+        <br />
+        <button (click)="Finalizar(item.orderId)">
+          <h2>Finalizar</h2>
+        </button>
+        <!-- <br />
+        <br />
+        <button (click)="Entregar(item.orderId)">
+          <h2>Entregar</h2>
+        </button> -->
+      </div>
     </div>
-  </div>
+    } 
+  }
 </div>

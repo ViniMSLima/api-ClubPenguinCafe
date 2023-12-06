@@ -11,4 +11,6 @@ public interface IPedidoService
     Task<int> Create(double Total);
     Task<List<CozinhaData>> Get();
     Task CreateProdutoPedido(TipoEspecial produto, int pedidoId);
+    Task Finalizar(int pedido_id);
+    Task Entregar(int pedido_id);
 }

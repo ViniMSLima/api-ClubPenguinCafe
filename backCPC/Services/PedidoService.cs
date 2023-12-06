@@ -72,16 +72,6 @@ public class PedidoService : IPedidoService
     public async Task<List<CozinhaData>> Get()
     {
         var query1 =
-            from produtosPedidos in this.ctx.ProdutosPedidos
-            join prod in this.ctx.Produtos
-                on produtosPedidos.ProdutoId equals prod.Id into ppj
-            from pp in ppj.DefaultIfEmpty()
-            group produtosPedidos by produtosPedidos.PedidoId into grouped
-            select new {
-                OrderId = grouped.Key,
-            };
-
-        var query777777 =
             from ped in this.ctx.Pedidos
             join prodPed in this.ctx.ProdutosPedidos
                 on ped.Id equals prodPed.PedidoId
@@ -96,7 +86,7 @@ public class PedidoService : IPedidoService
                 Entregue = ped.Entregue
             };
 
-        var a = await query777777.ToListAsync();
+        var a = await query1.ToListAsync();
 
         var orders = 
             from peds in a
@@ -111,7 +101,7 @@ public class PedidoService : IPedidoService
 
         foreach (var item in c)
         {
-            var query = 
+            var query2 = 
                 from member in a
                 where member.OrderId == item.OrderId
                 select new {
@@ -121,7 +111,7 @@ public class PedidoService : IPedidoService
                     Entregue = member.Entregue
                 };
 
-            var b = query.ToList();
+            var b = query2.ToList();
 
             string[] Nomes = b.Select(x=>x.Nome).ToArray();
             int[] qtds = b.Select(x=>x.Quantidade).ToArray();

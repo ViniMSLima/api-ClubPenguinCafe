@@ -42,9 +42,9 @@ Obs: 'Tem tela/Tem Interface' = Possui parte visual, mesmo sem funcionar.
 - [X] Promoção afeta o custo total do pedido.
 - [X] Pedidos podem ser vistos na tela de pedidos.
 - [X] É possível editar um pedido como 'Entregue' de alguma forma.
-- [ ] Apenas os pedidos corretos aparecem na tela de pedidos (finalizados, porém não entregues).
+- [X] Apenas os pedidos corretos aparecem na tela de pedidos (finalizados, porém não entregues).
 - [X] Usuário é capaz de ver as promoções no sistema.
 - [X] Usuário é capaz de gerar um código de promoção válido.
 - [X] Sistema realmente valida código de promoção.
 
-FALTAM 2
+FALTAM 1

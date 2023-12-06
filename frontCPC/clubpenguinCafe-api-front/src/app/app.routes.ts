@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { TelaClienteComponent } from './tela-cliente/tela-cliente.component';
 import { TelaAdmComponent } from './tela-adm/tela-adm.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProntosComponent } from './prontos/prontos.component';
+import { ProntosClienteComponent } from './prontoscliente/prontoscliente.component';
 
 export const routes: Routes = [
   // {
@@ -29,6 +31,14 @@ export const routes: Routes = [
   {
     path: 'pedidos',
     component: PedidosComponent,
+  },
+  {
+    path: 'prontos',
+    component: ProntosComponent,
+  },
+  {
+    path: 'prontoscliente',
+    component: ProntosClienteComponent,
   },
   {
     path: 'login',

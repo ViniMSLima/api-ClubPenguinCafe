@@ -86,17 +86,17 @@ export class ShopListService
 
   addPedido(obj: TipoEspecial[])
   {
-    this.http.post("pedido/register", obj).subscribe(response => alert("PEDIDO REALIZADO!"));
+    this.http.post("pedido/register", obj).subscribe(response => console.log("PEDIDO REALIZADO!"));
   }
 
   pedidoPronto(obj: number)
   {
-    this.http.post("pedido/pronto", obj).subscribe(response => alert("PEDIDO PRONTO!"));
+    this.http.post("pedido/pronto", obj).subscribe(response => console.log("PEDIDO PRONTO!"));
   }
 
   pedidoEntregue(obj: number)
   {
-    this.http.post("pedido/entregue", obj).subscribe(response => alert("PEDIDO ENTREGUE!"));
+    this.http.post("pedido/entregue", obj).subscribe(response => console.log("PEDIDO ENTREGUE!"));
   }
 
 }

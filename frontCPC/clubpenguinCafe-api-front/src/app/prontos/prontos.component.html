@@ -5,7 +5,7 @@
       style="height: 50px; margin: 10px"
       src="../../assets/imagens/canecaCafeCP.png"
     />
-    <h2 class="numDePedidos">PEDIDOS RESTANTES: {{ pedidosRestantes }}</h2>
+    <h2 class="numDePedidos">PEDIDOS PRONTOS: {{ pedidosRestantes }}</h2>
     <img
       style="height: 50px; margin: 10px"
       src="../../assets/imagens/copoCafeCP.png"
@@ -13,12 +13,12 @@
   </div>
   @for (item of list; track item) 
   { 
-    @if(item.pronto == false) {
+    @if(item.pronto == true && item.entregue == false) {
 
     <div class="card" style="width: 18rem">
       <div class="card-body">
         <h5 class="card-title" style="font-size: medium">
-          PEDIDO: {{ item.orderId }}
+          PEDIDO PRONTO: {{ item.orderId }}
         </h5>
         <div
           style="
@@ -41,8 +41,8 @@
           </div>
         </div>
         <br />
-        <button (click)="Finalizar(item.orderId)">
-          <h2>Finalizar</h2>
+        <button (click)="Entregar(item.orderId)">
+          <h2>Entregar</h2>
         </button>
       </div>
     </div>

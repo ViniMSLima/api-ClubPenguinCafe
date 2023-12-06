@@ -1,12 +1,77 @@
-<div style="display: flex;">
-    <div style="width: 50%; height: 100px; background-color: lightyellow; color: black; font-weight: bold; font-size: xx-large; align-items: center; display: flex; justify-content: center;">PREPARANDO</div>
-    <div style="width: 50%; height: 100px; background-color: lightgreen; color: black; font-weight: bold; font-size: xx-large; align-items: center; display: flex; justify-content: center;">PRONTO</div>
+<div style="display: flex">
+  <div
+    style="
+      width: 50%;
+      height: 100px;
+      background-color: lightyellow;
+      color: black;
+      font-weight: bold;
+      font-size: xx-large;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    "
+  >
+    PREPARANDO
+  </div>
+  <div
+    style="
+      width: 50%;
+      height: 100px;
+      background-color: lightgreen;
+      color: black;
+      font-weight: bold;
+      font-size: xx-large;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    "
+  >
+    PRONTO
+  </div>
 </div>
-<div style="display: flex; padding-top: 50px;">
-    <div style="width: 50%; justify-content: center; display: flex">
-        aesdf
-    </div>
-    <div style="width: 50%; justify-content: center; display: flex">
-        sdfsad
-    </div>
+<div style="display: flex; padding-top: 50px">
+  <div style="width: 50%; display: flex; flex-direction: column; align-items: center;">
+    @for (item of list; track item) 
+    { 
+        @if(item.pronto == false) 
+        {
+ 
+                <h5 class="card-title" style="font-size: 120px; font-weight: bold; padding-bottom: 70px;">
+                {{ item.orderId }}
+                </h5>
+                <div
+                style="
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    font-weight: bold;
+                    font-size: large;
+                ">
+            </div>
+
+        } 
+    }
+  </div>
+  <div style="width: 50%; display: flex; flex-direction: column; align-items: center;">
+    @for (item of list; track item) 
+    { 
+        @if(item.pronto == true && item.entregue== false) 
+        {
+                <h5 class="card-title" style="font-size: 120px; font-weight: bold; padding-bottom: 70px;">
+                {{ item.orderId }}
+                </h5>
+                <div
+                style="
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    font-weight: bold;
+                    font-size: large;
+                ">
+                </div>
+                <br>
+        } 
+    }
+  </div>
 </div>

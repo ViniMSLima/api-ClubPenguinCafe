@@ -38,6 +38,6 @@ export class ProntosComponent implements OnInit {
   ngOnInit(): void {
     const interval = setInterval(() => {
       this.carregarLista();
-    }, 200);
+    }, 1000);
   }
 }

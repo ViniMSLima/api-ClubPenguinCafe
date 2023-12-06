@@ -9,7 +9,6 @@ using Model;
 public interface IPedidoService
 {
     Task<int> Create(double Total);
-    Task<Pedido> GetById(int id);
     Task<List<CozinhaData>> Get();
     Task CreateProdutoPedido(TipoEspecial produto, int pedidoId);
 }

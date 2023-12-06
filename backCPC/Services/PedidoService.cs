@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using DTO;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using Microsoft.Identity.Client;
 using Model;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -20,6 +21,7 @@ public class PedidoService : IPedidoService
 
     public string[] produtos;
     public int[] qtds;
+    public int[] ids;
 
     public PedidoService(ClubPenguinDbContext ctx, ISecurityService security)
     {
@@ -59,48 +61,67 @@ public class PedidoService : IPedidoService
 
     public async Task<List<CozinhaData>> Get()
     {
+        var query1 =
+            from produtosPedidos in this.ctx.ProdutosPedidos
+            join prod in this.ctx.Produtos
+                on produtosPedidos.ProdutoId equals prod.Id into ppj
+            from pp in ppj.DefaultIfEmpty()
+            group produtosPedidos by produtosPedidos.PedidoId into grouped
+            select new {
+                OrderId = grouped.Key,
+            };
 
-        List<CozinhaData> pedidosCozinha = new();
-
-        var query =
-            from ped in ctx.Pedidos
-            join prodPed in ctx.ProdutosPedidos
-            on ped.Id equals prodPed.PedidoId
-            join prod in ctx.Produtos
-            on prodPed.ProdutoId equals prod.Id
+        var query777777 =
+            from ped in this.ctx.Pedidos
+            join prodPed in this.ctx.ProdutosPedidos
+                on ped.Id equals prodPed.PedidoId
+            join prod in this.ctx.Produtos
+                on prodPed.ProdutoId equals prod.Id
             select new
             {
-                PedidoId = ped.Id,
-                ProdutoNome = prod.Nome,
+                OrderId = ped.Id,
+                ProdName = prod.Nome,
                 Quantidade = prodPed.Quantidade
             };
-        
-        var kk = await query.ToListAsync();
-        var Nomes = kk.Select(x => x.ProdutoNome).ToArray();
-        var Quantidade = kk.Select(x => x.Quantidade).ToArray();
 
-        //testar lista de ids e for juntando todos q forem iguais
+        var a = await query777777.ToListAsync();
 
-        // CozinhaData c = new()
-        // {
-        //     OrderId = pedido.Id,
-        //     Produto = this.produtos,
-        //     Quantidade = this.qtds
-        // };
-        // pedidosCozinha.Add(c);
+        var orders = 
+            from peds in a
+            group peds by peds.OrderId into grouped
+            select new {
+                OrderId = grouped.Key
+            };
+
+        var c = orders.ToList();
 
 
-        return pedidosCozinha;
+        System.Console.WriteLine(a[0].OrderId);
+
+        List<CozinhaData> list = new();
+
+        foreach (var item in c)
+        {
+            var query = 
+                from member in a
+                where member.OrderId == item.OrderId
+                select new {
+                    Nome = member.ProdName,
+                    Quantidade = member.Quantidade
+                };
+
+            var b = query.ToList();
+            string[] Nomes = b.Select(x=>x.Nome).ToArray();
+            int[] qtds = b.Select(x=>x.Quantidade).ToArray();
+
+            CozinhaData kd = new()
+            {
+                OrderId = item.OrderId,
+                Produto = Nomes,
+                Quantidade = qtds
+            };
+            list.Add(kd);
+        }
+        return list;
     }
-
-    public async Task<Pedido> GetById(int id)
-    {
-        var query =
-            from u in this.ctx.Pedidos
-            where u.Id == id
-            select u;
-
-        return await query.FirstOrDefaultAsync();
-    }
-
 }

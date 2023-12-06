@@ -84,9 +84,19 @@ export class ShopListService
     return pedidos;
   }
 
+  getGrafico1x() {
+    var grafico1 = this.http.get("pedido/grafico1x");
+    return grafico1;
+  }
+
+  getGrafico1y() {
+    var grafico1 = this.http.get("pedido/grafico1y");
+    return grafico1;
+  }
+
   addPedido(obj: TipoEspecial[])
   {
-    this.http.post("pedido/register", obj).subscribe(response => console.log("PEDIDO REALIZADO!"));
+    this.http.post("pedido/register", obj).subscribe(response => alert("PEDIDO REALIZADO!"));
   }
 
   pedidoPronto(obj: number)

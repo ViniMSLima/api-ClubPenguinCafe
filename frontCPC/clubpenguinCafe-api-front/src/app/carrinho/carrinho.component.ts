@@ -32,6 +32,8 @@ export class CarrinhoComponent implements OnInit {
   disco: number = 0;
   isCupom: boolean = false;
 
+  cancelar: Product[] = [];
+
   adicionarPedido() {
     var list: any = [];
 
@@ -46,6 +48,8 @@ export class CarrinhoComponent implements OnInit {
       });
 
       this.service.addPedido(list);
+      localStorage.setItem('carrinho', JSON.stringify(this.cancelar));
+      this.router.navigate(['']);
     }
     else
     {

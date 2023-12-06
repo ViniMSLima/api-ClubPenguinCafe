@@ -13,4 +13,8 @@ public interface IPedidoService
     Task CreateProdutoPedido(TipoEspecial produto, int pedidoId);
     Task Finalizar(int pedido_id);
     Task Entregar(int pedido_id);
+    Task<string[]> GetGrafico1x();
+    Task<int[]> GetGrafico1y();
+    Task<string[]> GetGrafico2x();
+    Task<string[]> GetGrafico2y();
 }

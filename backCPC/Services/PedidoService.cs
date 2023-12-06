@@ -10,6 +10,7 @@ using DTO;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Identity.Client;
 using Model;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -145,5 +146,55 @@ public class PedidoService : IPedidoService
 
         this.ctx.Update(pedido);
         await this.ctx.SaveChangesAsync();
+    }
+
+    public async Task<string[]> GetGrafico1x()
+    {
+        var query = from pedido in this.ctx.Pedidos
+            join produtosPedidos in this.ctx.ProdutosPedidos on pedido.Id equals produtosPedidos.PedidoId
+            join produto in this.ctx.Produtos on produtosPedidos.ProdutoId equals produto.Id into produtosGroup
+            from produto in produtosGroup.DefaultIfEmpty()
+            group produtosPedidos by new { produto.Nome } into produtoGroup
+            select new 
+            {
+                Data1 = produtoGroup.Key.Nome,
+                Data2 = produtoGroup.Sum(x => x.Quantidade)
+            };
+
+        var a = query.ToList();
+
+        string[] produtos = a.Select(x=>x.Data1).ToArray();
+
+        return produtos;
+    }
+
+    public async Task<int[]> GetGrafico1y()
+    {
+        var query = from pedido in this.ctx.Pedidos
+            join produtosPedidos in this.ctx.ProdutosPedidos on pedido.Id equals produtosPedidos.PedidoId
+            join produto in this.ctx.Produtos on produtosPedidos.ProdutoId equals produto.Id into produtosGroup
+            from produto in produtosGroup.DefaultIfEmpty()
+            group produtosPedidos by new { produto.Nome } into produtoGroup
+            select new 
+            {
+                Data1 = produtoGroup.Key.Nome,
+                Data2 = produtoGroup.Sum(x => x.Quantidade)
+            };
+
+        var a = query.ToList();
+
+        int[] quantidades = a.Select(x=>x.Data2).ToArray();
+
+        return quantidades;
+    }
+
+    public Task<string[]> GetGrafico2x()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<string[]> GetGrafico2y()
+    {
+        throw new NotImplementedException();
     }
 }

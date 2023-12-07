@@ -84,13 +84,13 @@ export class ShopListService
     return pedidos;
   }
 
-  getGrafico1x() {
-    var grafico1 = this.http.get("pedido/grafico1x");
+  getGrafico1() {
+    var grafico1 = this.http.get("pedido/grafico1");
     return grafico1;
   }
 
-  getGrafico1y() {
-    var grafico1 = this.http.get("pedido/grafico1y");
+  getGrafico2() {
+    var grafico1 = this.http.get("pedido/grafico2");
     return grafico1;
   }
 

@@ -17,11 +17,11 @@ export class LineChartComponent implements OnInit{
   
   public chart: any;
 
-  public x: string[] = [];
-  public y: number[] = [];
+  public x: any[] = [];
+  public y: any[] = [];
 
   ngOnInit(): void {
-    this.createChart();
+    this.createChart5();
   }
 
   createChart() {
@@ -35,7 +35,7 @@ export class LineChartComponent implements OnInit{
            this.y.push(element);
          });
          
-         this.chart = new Chart("MyChart", {
+         this.chart = new Chart("b", {
            type: 'line', //this denotes tha type of chart
    
            data: {// values on X-Axis
@@ -50,11 +50,39 @@ export class LineChartComponent implements OnInit{
            },
            options: {
              aspectRatio:2.5
-         
            }
          });
        });
     });
    }
 
+   createChart5() {
+    this.service.getGrafico1().subscribe((data: any) => {
+      data.data1.forEach((element: any) => {
+        this.x.push(element);
+      });
+      data.data2.forEach((element: any) => {
+        this.y.push(element);
+      });
+
+      this.chart = new Chart('b', {
+        type: 'line', //this denotes tha type of chart
+
+        data: {
+          // values on X-Axis
+          labels: Object.assign(this.x),
+          datasets: [
+            {
+              label: 'Vendas por produtos',
+              data: Object.assign(this.y),
+              backgroundColor: 'blue',
+            },
+          ],
+        },
+        options: {
+          aspectRatio: 2.5,
+        },
+      });
+    });
   }
+}

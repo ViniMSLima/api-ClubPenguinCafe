@@ -25,7 +25,7 @@ public class PedidoController : ControllerBase
     [EnableCors("DefaultPolicy")]
     public async Task<IActionResult> Create(
         [FromBody] TipoEspecial[] carrinho,
-        [FromServices]IPedidoService service)
+        [FromServices] IPedidoService service)
     {
         var errors = new List<string>();
 
@@ -34,7 +34,7 @@ public class PedidoController : ControllerBase
 
         var id = await service.Create(carrinho[0].Total);
 
-        foreach(TipoEspecial p in carrinho)
+        foreach (TipoEspecial p in carrinho)
         {
             await service.CreateProdutoPedido(p, id);
         }
@@ -45,7 +45,7 @@ public class PedidoController : ControllerBase
     [HttpGet("")]
     [EnableCors("DefaultPolicy")]
     public async Task<IActionResult> Get(
-        [FromServices]IPedidoService service)
+        [FromServices] IPedidoService service)
     {
         var a = await service.Get();
         var errors = new List<string>();
@@ -65,8 +65,8 @@ public class PedidoController : ControllerBase
     [HttpPost("pronto")]
     [EnableCors("DefaultPolicy")]
     public async Task<IActionResult> GetPronto(
-        [FromServices]IPedidoService service,
-        [FromBody]int pedido_id)
+        [FromServices] IPedidoService service,
+        [FromBody] int pedido_id)
     {
         await service.Finalizar(pedido_id);
         var errors = new List<string>();
@@ -79,8 +79,8 @@ public class PedidoController : ControllerBase
     [HttpPost("entregue")]
     [EnableCors("DefaultPolicy")]
     public async Task<IActionResult> GetEntregue(
-        [FromServices]IPedidoService service,
-        [FromBody]int pedido_id)
+        [FromServices] IPedidoService service,
+        [FromBody] int pedido_id)
     {
         await service.Entregar(pedido_id);
         var errors = new List<string>();
@@ -90,36 +90,10 @@ public class PedidoController : ControllerBase
         return Ok();
     }
 
-    [HttpGet("grafico1x")]
-    [EnableCors("DefaultPolicy")]
-    public async Task<IActionResult> GetGrafico1x(
-        [FromServices]IPedidoService service)
-    {
-        var a = await service.GetGrafico1x();
-        var errors = new List<string>();
-        if (errors.Count > 0)
-            return BadRequest(errors);
-
-        return Ok(a);
-    }
-
-    [HttpGet("grafico1y")]
-    [EnableCors("DefaultPolicy")]
-    public async Task<IActionResult> GetGrafico1y(
-        [FromServices]IPedidoService service)
-    {
-        var a = await service.GetGrafico1y();
-        var errors = new List<string>();
-        if (errors.Count > 0)
-            return BadRequest(errors);
-
-        return Ok(a);
-    }
-
-     [HttpGet("grafico2x")]
+    [HttpGet("grafico2x")]
     [EnableCors("DefaultPolicy")]
     public async Task<IActionResult> GetGrafico2x(
-        [FromServices]IPedidoService service)
+       [FromServices] IPedidoService service)
     {
         var a = await service.GetGrafico2x();
         var errors = new List<string>();
@@ -132,7 +106,7 @@ public class PedidoController : ControllerBase
     [HttpGet("grafico2y")]
     [EnableCors("DefaultPolicy")]
     public async Task<IActionResult> GetGrafico2y(
-        [FromServices]IPedidoService service)
+        [FromServices] IPedidoService service)
     {
         var a = await service.GetGrafico2y();
         var errors = new List<string>();
@@ -142,5 +116,30 @@ public class PedidoController : ControllerBase
         return Ok(a);
     }
 
+    [HttpGet("grafico1")]
+    [EnableCors("DefaultPolicy")]
+    public async Task<IActionResult> GetGrafico1(
+        [FromServices] IPedidoService service)
+    {
+        var a = await service.GetGrafico1();
+        var errors = new List<string>();
+        if (errors.Count > 0)
+            return BadRequest(errors);
+
+        return Ok(a);
+    }
+
+    [HttpGet("grafico2")]
+    [EnableCors("DefaultPolicy")]
+    public async Task<IActionResult> GetGrafico2(
+            [FromServices] IPedidoService service)
+    {
+        var a = await service.GetGrafico2();
+        var errors = new List<string>();
+        if (errors.Count > 0)
+            return BadRequest(errors);
+
+        return Ok(a);
+    }
 
 }

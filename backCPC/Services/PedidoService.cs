@@ -147,15 +147,15 @@ public class PedidoService : IPedidoService
         this.ctx.Update(pedido);
         await this.ctx.SaveChangesAsync();
     }
-
-    public async Task<string[]> GetGrafico1x()
+    
+    public async Task<GraficoData> GetGrafico1()
     {
         var query = from pedido in this.ctx.Pedidos
             join produtosPedidos in this.ctx.ProdutosPedidos on pedido.Id equals produtosPedidos.PedidoId
             join produto in this.ctx.Produtos on produtosPedidos.ProdutoId equals produto.Id into produtosGroup
             from produto in produtosGroup.DefaultIfEmpty()
             group produtosPedidos by new { produto.Nome } into produtoGroup
-            select new 
+            select new
             {
                 Data1 = produtoGroup.Key.Nome,
                 Data2 = produtoGroup.Sum(x => x.Quantidade)
@@ -164,28 +164,14 @@ public class PedidoService : IPedidoService
         var a = query.ToList();
 
         string[] produtos = a.Select(x=>x.Data1).ToArray();
+        string[] quantidades = a.Select(x=>x.Data2.ToString()).ToArray();
 
-        return produtos;
-    }
+        GraficoData b = new(){
+            Data1 = produtos,
+            Data2 = quantidades
+        };
 
-    public async Task<int[]> GetGrafico1y()
-    {
-        var query = from pedido in this.ctx.Pedidos
-            join produtosPedidos in this.ctx.ProdutosPedidos on pedido.Id equals produtosPedidos.PedidoId
-            join produto in this.ctx.Produtos on produtosPedidos.ProdutoId equals produto.Id into produtosGroup
-            from produto in produtosGroup.DefaultIfEmpty()
-            group produtosPedidos by new { produto.Nome } into produtoGroup
-            select new 
-            {
-                Data1 = produtoGroup.Key.Nome,
-                Data2 = produtoGroup.Sum(x => x.Quantidade)
-            };
-
-        var a = query.ToList();
-
-        int[] quantidades = a.Select(x=>x.Data2).ToArray();
-
-        return quantidades;
+        return b;
     }
 
     public async Task<int[]> GetGrafico2x()
@@ -212,4 +198,26 @@ public class PedidoService : IPedidoService
     return b;
 }
 
+    public async Task<GraficoData> GetGrafico2()
+    {
+        var query = 
+            from pedido in this.ctx.Pedidos
+            select new 
+            {
+                ids = pedido.Id,
+                precos = pedido.Preco
+            };
+
+        var a = query.ToArray();
+
+        string[] arrayIds = a.Select(x => x.ids.ToString()).ToArray();
+        string[] arrayPrecos = a.Select(x => x.precos.ToString()).ToArray();
+
+        GraficoData b = new(){
+            Data1 = arrayIds,
+            Data2 = arrayPrecos
+        };
+
+        return b;
+    }
 }

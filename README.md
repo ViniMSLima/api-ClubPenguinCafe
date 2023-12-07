@@ -26,7 +26,7 @@ Obs: 'Tem tela/Tem Interface' = Possui parte visual, mesmo sem funcionar.
 - [X] Login realmente busca usuário no banco de dados.
 - [X] Aplica salt na senha do usuário.
 - [X] Aplica slow Hash na senha do usuário.
-- [X] Login retorna JWT para o frontend que o guarda no Sessin Storage.
+- [X] Login retorna JWT para o frontend que o guarda no Session Storage.
 - [X] Após o Login a página de usuário normal ou adm é mostrada corretamente.
 - [X] Adm é capaz de ver produtos existentes.
 - [X] Adm é capaz de cadastrar novos produtos.

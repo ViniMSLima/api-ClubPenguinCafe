@@ -157,7 +157,7 @@ export class NewAdmDialog {
       this.client.register({
         login: this.username,
         password: this.password,
-        isAdm: false,
+        isAdm: this.isChecked,
       });
 
       this.dialogRef.close();

@@ -21,7 +21,7 @@ export class LineChartComponent implements OnInit{
   public y: any[] = [];
 
   ngOnInit(): void {
-    this.createChart5();
+    this.createChart();
   }
 
   createChart() {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import Chart from 'chart.js/auto';
+import { ShopListService } from '../services/shop-list.service';
 
 @Component({
   selector: 'app-line-chart',
@@ -10,40 +11,50 @@ import Chart from 'chart.js/auto';
   styleUrl: './line-chart.component.css'
 })
 export class LineChartComponent implements OnInit{
+  constructor(
+    private service: ShopListService
+  ) {}
+  
   public chart: any;
+
+  public x: string[] = [];
+  public y: number[] = [];
 
   ngOnInit(): void {
     this.createChart();
   }
 
-  createChart(){
-  
-    this.chart = new Chart("MyChart", {
-      type: 'line', //this denotes tha type of chart
-
-      data: {// values on X-Axis
-        labels: ['2022-05-10', '2022-05-11', '2022-05-12','2022-05-13',
-								 '2022-05-14', '2022-05-15', '2022-05-16','2022-05-17', ], 
-	       datasets: [
-          {
-            label: "Sales",
-            data: ['467','576', '572', '79', '92',
-								 '574', '573', '576'],
-            backgroundColor: 'blue'
-          },
-          {
-            label: "Profit",
-            data: ['542', '542', '536', '327', '17',
-									 '0.00', '538', '541'],
-            backgroundColor: 'limegreen'
-          }  
-        ]
-      },
-      options: {
-        aspectRatio:2.5
-      }
-      
+  createChart() {
+    this.service.getGrafico2x().subscribe((data: any) => {
+       data.forEach((element: any) => {
+         this.x.push(element);
+       });
+   
+       this.service.getGrafico2y().subscribe((data: any) => {
+         data.forEach((element: any) => {
+           this.y.push(element);
+         });
+         
+         this.chart = new Chart("MyChart", {
+           type: 'line', //this denotes tha type of chart
+   
+           data: {// values on X-Axis
+             labels: Object.assign(this.x), 
+             datasets: [
+               {
+                 label: "Sales",
+                 data: Object.assign(this.y),
+                 backgroundColor: 'blue'
+               } 
+             ]
+           },
+           options: {
+             aspectRatio:2.5
+         
+           }
+         });
+       });
     });
-  }
+   }
 
-}
+  }

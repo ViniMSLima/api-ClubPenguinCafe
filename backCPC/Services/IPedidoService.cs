@@ -15,6 +15,6 @@ public interface IPedidoService
     Task Entregar(int pedido_id);
     Task<string[]> GetGrafico1x();
     Task<int[]> GetGrafico1y();
-    Task<string[]> GetGrafico2x();
-    Task<string[]> GetGrafico2y();
+    Task<int[]> GetGrafico2x();
+    Task<double[]> GetGrafico2y();
 }

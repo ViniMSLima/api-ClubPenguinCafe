@@ -94,6 +94,16 @@ export class ShopListService
     return grafico1;
   }
 
+  getGrafico2x() {
+    var grafico1 = this.http.get("pedido/grafico2x");
+    return grafico1;
+  }
+
+  getGrafico2y() {
+    var grafico1 = this.http.get("pedido/grafico2y");
+    return grafico1;
+  }
+
   addPedido(obj: TipoEspecial[])
   {
     this.http.post("pedido/register", obj).subscribe(response => alert("PEDIDO REALIZADO!"));

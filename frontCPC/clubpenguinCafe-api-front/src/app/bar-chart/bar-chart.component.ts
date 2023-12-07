@@ -30,41 +30,39 @@ export class BarChartComponent implements OnInit {
   public y: number[] = [];
 
 
-  createChart(){
-  
+  createChart() {
     this.service.getGrafico1x().subscribe((data: any) => {
-      data.forEach((element: any) => {
-          this.x.push(element);
-      });
+       data.forEach((element: any) => {
+         this.x.push(element);
+       });
+   
+       this.service.getGrafico1y().subscribe((data: any) => {
+         data.forEach((element: any) => {
+           this.y.push(element);
+         });
+   
+         console.log(typeof(Object.assign(this.x)));
+         console.log(this.y);
+         
+         this.chart1 = new Chart("MyChart1", {
+           type: 'bar', //this denotes tha type of chart
+   
+           data: {// values on X-Axis
+             labels: Object.assign(this.x), 
+             datasets: [
+               {
+                 label: "Sales",
+                 data: Object.assign(this.y),
+                 backgroundColor: 'blue'
+               } 
+             ]
+           },
+           options: {
+             aspectRatio:2.5
+         
+           }
+         });
+       });
     });
-
-    this.service.getGrafico1y().subscribe((data: any) => {
-      data.forEach((element: any) => {
-        this.y.push(element);
-    });
-    });
-
-    console.log(Object.assign(this.x));
-    console.log(this.y);
-    
-    this.chart1 = new Chart("MyChart1", {
-      type: 'bar', //this denotes tha type of chart
-
-      data: {// values on X-Axis
-        labels: Object.assign(this.x), 
-	       datasets: [
-          {
-            label: "Sales",
-            data: Object.assign(this.y),
-            backgroundColor: 'blue'
-          } 
-        ]
-      },
-      options: {
-        aspectRatio:2.5
-    
-      }
-      
-    });
-  }
+   }
 }

@@ -54,7 +54,7 @@ export class TelaClienteComponent implements OnInit {
 
     this.service.getCupons().subscribe((data: any) => {
       this.list3 = [];
-      data.a.forEach((x: any) => this.list3.push(x));
+      data.forEach((x: any) => this.list3.push(x));
     });
   }
 }

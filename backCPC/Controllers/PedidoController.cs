@@ -116,4 +116,31 @@ public class PedidoController : ControllerBase
         return Ok(a);
     }
 
+     [HttpGet("grafico2x")]
+    [EnableCors("DefaultPolicy")]
+    public async Task<IActionResult> GetGrafico2x(
+        [FromServices]IPedidoService service)
+    {
+        var a = await service.GetGrafico2x();
+        var errors = new List<string>();
+        if (errors.Count > 0)
+            return BadRequest(errors);
+
+        return Ok(a);
+    }
+
+    [HttpGet("grafico2y")]
+    [EnableCors("DefaultPolicy")]
+    public async Task<IActionResult> GetGrafico2y(
+        [FromServices]IPedidoService service)
+    {
+        var a = await service.GetGrafico2y();
+        var errors = new List<string>();
+        if (errors.Count > 0)
+            return BadRequest(errors);
+
+        return Ok(a);
+    }
+
+
 }

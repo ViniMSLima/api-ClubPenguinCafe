@@ -11,7 +11,7 @@ export class ProductService {
 
   register(data: Product)
   {
-    this.http.post('product/register', data)
+    this.http.post('produto/register', data)
       .subscribe(response => console.log(response))
   }
 

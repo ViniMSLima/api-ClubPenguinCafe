@@ -188,13 +188,28 @@ public class PedidoService : IPedidoService
         return quantidades;
     }
 
-    public Task<string[]> GetGrafico2x()
+    public async Task<int[]> GetGrafico2x()
     {
-        throw new NotImplementedException();
+        var query = 
+            from pedido in this.ctx.Pedidos
+            select pedido.Id; 
+
+        var a = query.ToArray();
+
+        return a;
     }
 
-    public Task<string[]> GetGrafico2y()
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<double[]> GetGrafico2y()
+{
+    var query = 
+        from pedido in this.ctx.Pedidos
+        select pedido.Preco; 
+            
+    var a = query.ToArray();
+
+    var b = a.Select(x => x.Value).ToArray();
+
+    return b;
+}
+
 }
